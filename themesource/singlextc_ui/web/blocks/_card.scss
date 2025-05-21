@@ -1,0 +1,100 @@
+//
+//
+// ./blocks/_card.scss
+//
+//
+@mixin card-style($type: 'default') {
+	background-color: var(--hlcard-bg-color);
+	border-radius: var(--hlcard-border-radius);
+	padding: var(--hlcard-padding);
+	@media (max-width: $screen-sm) {
+		border-radius: calc(var(--hlcard-padding) / 2);
+		padding: calc(var(--hlcard-padding) / 3);
+	}
+	margin: 0;
+	border: var(--hlcard-border);
+	height: 100%;
+	box-shadow: none;
+	& .card-title {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		height: 42px;
+		margin-bottom: calc(var(--hlcard-padding) / 2);
+		& h1,
+		& h2,
+		& h3,
+		& h4,
+		& h5,
+		& h6 {
+			padding: 0;
+			margin: 0;
+			color: var(--hlcard-title-color);
+			font-size: var(--hlcard-title-size);
+			font-weight: var(--hlcard-title-weight);
+		}
+		& span[class*='mx-icon'] {
+			@include btn-ico-default('lined');
+		}
+		@media (max-width: $screen-sm) {
+			height: 36px;
+			margin-bottom: calc(var(--hlcard-padding) / 3);
+			& h1,
+			& h2,
+			& h3,
+			& h4,
+			& h5,
+			& h6 {
+				font-size: calc(var(--hlcard-title-size) - 2px);
+			}
+		}
+	}
+	@if ($type == 'emp') {
+		background-color: var(--hlcard-bg-color-emp);
+		box-shadow: var(--hlcard-box-shdow);
+	}
+	& .widget-datagrid-content {
+		margin: 0;
+	}
+}
+[class*='hlmando_layouts'] {
+	.card {
+		@include card-style();
+		&.emp {
+			@include card-style('emp');
+		}
+		&.sm {
+			flex-direction: row;
+			align-items: center;
+			padding: 8px 32px;
+			border-radius: 12px;
+			background-color: rgba(255, 255, 255, 0.7);
+			@media (max-width: $screen-sm) {
+				padding: 4px calc(var(--hlcard-padding) / 3);
+			}
+		}
+	}
+}
+
+.card {
+	&.search {
+		gap: 12px;
+		margin-bottom: 20px;
+		& > .mx-layoutgrid {
+			& > .row {
+				gap: 4px 0;
+				& > [class*='col'] {
+					padding: 0 8px !important;
+					.form-group {
+						margin: 0;
+					}
+				}
+			}
+		}
+		& .btn-box {
+			display: flex;
+			justify-content: flex-end;
+			gap: 4px;
+		}
+	}
+}

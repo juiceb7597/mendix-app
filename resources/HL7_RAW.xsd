@@ -1,0 +1,965 @@
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:hl7-org:v3" 
+  xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="document">
+    <xs:annotation>
+      <xs:documentation>Note: This GUDID SPL XML Sample is not meant to be valid against the business rules for a GUDID submission.  This is a comprehensive example of all the potential elements that can be submitted to the GUDID.  Do not attempt to submit this sample as a test submission.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="id">
+          <xs:annotation>
+            <xs:documentation>The document element is administrative information. (all elements are required)id@root is a globally unique identifier for the submission and should be created by the sending system.  The sender should be following the algorithm rules set for in OSF's Universally Unique Identifier standards.code@code for the submission type (GUDID Submission = C101716)effectiveTime@value for the DI Record publish date (note that this cannot be a date in the past - i.e., today's date or future date); all dates should be formatted as yyyymmdd setId@root is a globally unique identifier for the document that will be used to link subsequent versions of the DI Record with previous versions.  Note this is also a UUID, and must follow the rules for generating a globally unique identifier value.versionNumber@value is "1" for the initial submission and increments by one for any updates to the DI Record</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:simpleContent>
+              <xs:extension base="xs:string">
+                <xs:attribute type="xs:string" name="root"/>
+              </xs:extension>
+            </xs:simpleContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="code">
+          <xs:complexType>
+            <xs:simpleContent>
+              <xs:extension base="xs:string">
+                <xs:attribute type="xs:string" name="code"/>
+                <xs:attribute type="xs:string" name="codeSystem"/>
+              </xs:extension>
+            </xs:simpleContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="effectiveTime">
+          <xs:complexType>
+            <xs:simpleContent>
+              <xs:extension base="xs:string">
+                <xs:attribute type="xs:int" name="value"/>
+              </xs:extension>
+            </xs:simpleContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="setId">
+          <xs:complexType>
+            <xs:simpleContent>
+              <xs:extension base="xs:string">
+                <xs:attribute type="xs:string" name="root"/>
+              </xs:extension>
+            </xs:simpleContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="versionNumber">
+          <xs:complexType>
+            <xs:simpleContent>
+              <xs:extension base="xs:string">
+                <xs:attribute type="xs:byte" name="value"/>
+              </xs:extension>
+            </xs:simpleContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="author">
+          <xs:annotation>
+            <xs:documentation>The author element provides administrative information about who is submitting the DI Record. One author is requiredTo provide the DUNS number for the Submitter Organization. This information will be used for validation activities onlycode@code is the coded value for either the Labeler Organization (C101684) or Third-Party (C101710)code@codeSystem, 2.16.840.1.113883.3.26.1.1 is the OID for NCItid.root= DUNS OID 1.3.6.1.4.1.519.1; this is the OID for Dun &amp; Bradstreetid.extension = DUNS # for the Labeler Organization (can be the parent or corporate DUNS or the Secondary/Labeler DUNS) or the Third Party submitting the HL7 SPLNote the system will pull the data from Dun &amp; Bradstreet to display the company name and physical address.Only one value is expected for the author. The sample shows both, but the sender should indicate the correct value for who is submitting the XML to the FDA.</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="assignedEntity">
+                <xs:annotation>
+                  <xs:documentation>Organization submitting the SPL XML (one and only one required)</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="representedOrganization">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="assignedEntity1">
+                            <xs:annotation>
+                              <xs:documentation>If the submitter-organization is the Secondary Labeler organization DUNS, the code=C101684</xs:documentation>
+                            </xs:annotation>
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="code">
+                                  <xs:complexType>
+                                    <xs:simpleContent>
+                                      <xs:extension base="xs:string">
+                                        <xs:attribute type="xs:string" name="code"/>
+                                        <xs:attribute type="xs:string" name="codeSystem"/>
+                                      </xs:extension>
+                                    </xs:simpleContent>
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element name="representedOrganization">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element name="id">
+                                        <xs:complexType>
+                                          <xs:simpleContent>
+                                            <xs:extension base="xs:string">
+                                              <xs:attribute type="xs:string" name="root"/>
+                                              <xs:attribute type="xs:int" name="extension"/>
+                                            </xs:extension>
+                                          </xs:simpleContent>
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="component">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="structuredBody">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="component">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="section">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element type="xs:string" name="id"/>
+                                <xs:element type="xs:string" name="code"/>
+                                <xs:element type="xs:string" name="effectiveTime"/>
+                                <xs:element name="subject">
+                                  <xs:annotation>
+                                    <xs:documentation>This subject element contains all of the GUDID DI Record information.</xs:documentation>
+                                  </xs:annotation>
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element name="manufacturedProduct">
+                                        <xs:annotation>
+                                          <xs:documentation>classCode=MANU for the GUDID Submission, without this value, the XML may fail validation</xs:documentation>
+                                        </xs:annotation>
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element name="manufacturedProduct">
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element name="code">
+                                                    <xs:annotation>
+                                                      <xs:documentation>Primary Device Identifier (required)code@code is the location of the Primary Device Identifier (DI), base package DI#101 code@codeSystem is the device-issuing-agency associated with the primary DI number (below the OID for GS1 is shown)</xs:documentation>
+                                                    </xs:annotation>
+                                                    <xs:complexType>
+                                                      <xs:simpleContent>
+                                                        <xs:extension base="xs:string">
+                                                          <xs:attribute type="xs:byte" name="code"/>
+                                                          <xs:attribute type="xs:string" name="codeSystem"/>
+                                                        </xs:extension>
+                                                      </xs:simpleContent>
+                                                    </xs:complexType>
+                                                  </xs:element>
+                                                  <xs:element type="xs:string" name="name">
+                                                    <xs:annotation>
+                                                      <xs:documentation>The Trade Name/Brand name (required) The element is the free-text field for the Brand/Proprietary/Trade Name of the medical device</xs:documentation>
+                                                    </xs:annotation>
+                                                  </xs:element>
+                                                  <xs:element type="xs:string" name="desc">
+                                                    <xs:annotation>
+                                                      <xs:documentation>The Additional Product Description (optional)The desc element is the free-text description</xs:documentation>
+                                                    </xs:annotation>
+                                                  </xs:element>
+                                                  <xs:element name="asIdentifiedEntity" maxOccurs="unbounded" minOccurs="0">
+                                                    <xs:annotation>
+                                                      <xs:documentation>The Device Model Number (required)The Catalog number for the device.</xs:documentation>
+                                                    </xs:annotation>
+                                                    <xs:complexType>
+                                                      <xs:sequence>
+                                                        <xs:element name="id">
+                                                          <xs:annotation>
+                                                            <xs:documentation>id@root is a globally unique identifier assigned by the company for the model numberid@extension is the company issued Device Model Number code@code, C99285 is the code to indicate the type of Device Model, and C99286 for Catalog Number code@codeSystem, 2.16.840.1.113883.3.26.1.1 is the OID for NCItid@root is a globally unique identifier assigned by the company for the catalog numberid@extension is the company issued for the Catalog Number code@code, C99285 is the code to indicate the type of Device Model, and C99286 for Catalog Number code@codeSystem, 2.16.840.1.113883.3.26.1.1 is the OID for NCIt</xs:documentation>
+                                                          </xs:annotation>
+                                                          <xs:complexType>
+                                                            <xs:simpleContent>
+                                                              <xs:extension base="xs:string">
+                                                                <xs:attribute type="xs:string" name="root" use="optional"/>
+                                                                <xs:attribute type="xs:string" name="extension" use="optional"/>
+                                                              </xs:extension>
+                                                            </xs:simpleContent>
+                                                          </xs:complexType>
+                                                        </xs:element>
+                                                        <xs:element name="code">
+                                                          <xs:complexType>
+                                                            <xs:simpleContent>
+                                                              <xs:extension base="xs:string">
+                                                                <xs:attribute type="xs:string" name="code" use="optional"/>
+                                                                <xs:attribute type="xs:string" name="codeSystem" use="optional"/>
+                                                              </xs:extension>
+                                                            </xs:simpleContent>
+                                                          </xs:complexType>
+                                                        </xs:element>
+                                                      </xs:sequence>
+                                                    </xs:complexType>
+                                                  </xs:element>
+                                                  <xs:element name="asSpecializedKind" maxOccurs="unbounded" minOccurs="0">
+                                                    <xs:annotation>
+                                                      <xs:documentation>The FDA Product Code is Administrative data (one or more required)The GMDN  Preferred Term Code (either one GMDN PT Code or FDA PT Code is required)The FDA Preferred Term Code (either one GMDN PT Code or FDA PT Code is required)</xs:documentation>
+                                                    </xs:annotation>
+                                                    <xs:complexType>
+                                                      <xs:sequence>
+                                                        <xs:element name="generalizedMaterialKind">
+                                                          <xs:complexType>
+                                                            <xs:sequence>
+                                                              <xs:element name="code">
+                                                                <xs:annotation>
+                                                                  <xs:documentation>code@code is the 3-character Product Code (ABC is a placeholder)codeSystem, 2.16.840.1.113883.3.150, is the OID for FDA Tracking SystemsThe GUDID system will resolve the procode term and definition based on the code provided.code@code is the 5-digit GMDN Preferred Term code (99999 is a placeholder)code@codeSystem, 2.16.840.1.113883.6.276, is the OID for GMDN AgencyThe GUDID system will resolve the Preferred Term based on the code provided.code@code is the 4-character FDA Preferred Term code (VSKK is a placeholder)code@codeSystem, 2.16.840.1.113883.6.303, is the OID for GMDN AgencyThe GUDID system will resolve the Preferred Term based on the code provided.</xs:documentation>
+                                                                </xs:annotation>
+                                                                <xs:complexType>
+                                                                  <xs:simpleContent>
+                                                                    <xs:extension base="xs:string">
+                                                                      <xs:attribute type="xs:string" name="code" use="optional"/>
+                                                                      <xs:attribute type="xs:string" name="codeSystem" use="optional"/>
+                                                                    </xs:extension>
+                                                                  </xs:simpleContent>
+                                                                </xs:complexType>
+                                                              </xs:element>
+                                                            </xs:sequence>
+                                                          </xs:complexType>
+                                                        </xs:element>
+                                                      </xs:sequence>
+                                                    </xs:complexType>
+                                                  </xs:element>
+                                                  <xs:element name="asEquivalentEntity" maxOccurs="unbounded" minOccurs="0">
+                                                    <xs:annotation>
+                                                      <xs:documentation>The Additional or Alternative Device Identifiers (optional)Below is an example of a Secondary Device Identifier</xs:documentation>
+                                                    </xs:annotation>
+                                                    <xs:complexType>
+                                                      <xs:sequence>
+                                                        <xs:element name="code">
+                                                          <xs:annotation>
+                                                            <xs:documentation>code@code, C101724 is the code for Secondary Device Identifier)code@codeSystem, 2.16.840.1.113883.3.26.1.1 is the OID for NCItThe Unit of Use Device Identifier is provided with the asEquivalentEntity element.code@code, C101717 is the code for a Unit of Use Device Identifier)code@codeSystem, 2.16.840.1.113883.3.26.1.1 is the OID for NCItThe Direct Marking Device Identifier is provided with the asEquivalentEntity element.code@code, C101678 is the code for a Direct Marking Device Identifier)code@codeSystem, 2.16.840.1.113883.3.26.1.1 is the OID for NCIt</xs:documentation>
+                                                          </xs:annotation>
+                                                          <xs:complexType>
+                                                            <xs:simpleContent>
+                                                              <xs:extension base="xs:string">
+                                                                <xs:attribute type="xs:string" name="code" use="optional"/>
+                                                                <xs:attribute type="xs:string" name="codeSystem" use="optional"/>
+                                                              </xs:extension>
+                                                            </xs:simpleContent>
+                                                          </xs:complexType>
+                                                        </xs:element>
+                                                        <xs:element name="definingMaterialKind">
+                                                          <xs:annotation>
+                                                            <xs:documentation>definingMaterialKind is the element used to provide the Secondary Device Identifiercode@code is the Secondary Device Identifier valuecode@codeSystem, 2.16.840.1.113883.6.40 is the OID for HIBCC.  The code system must not be the same issuing agency as the one for the Primary Device Identifier - i.e., it needs to one of the other three options available for the Secondary Device Identifier.definingMaterialKind indicates the Unit of Use Device Identifiercode@code is the Unit of Use Device Identifier Numbercode@codeSystem 1.3.160, is the OID for GS1.  Note that this codeSystem needs to be the same codeSystem as provided for the Primary Device Identifier, otherwise it will not pass validation.)definingMaterialKind indicates the Direct Marking Device Identifiercode@code is the Direct Marking Device Identifier Numbercode@codeSystem 1.3.160, is the OID for GS1.  Note that this codeSystem needs to be the same codeSystem as provided for the Primary Device Identifier, otherwise it will not pass validation.)</xs:documentation>
+                                                          </xs:annotation>
+                                                          <xs:complexType>
+                                                            <xs:sequence>
+                                                              <xs:element name="code">
+                                                                <xs:complexType>
+                                                                  <xs:simpleContent>
+                                                                    <xs:extension base="xs:string">
+                                                                      <xs:attribute type="xs:string" name="code" use="optional"/>
+                                                                      <xs:attribute type="xs:string" name="codeSystem" use="optional"/>
+                                                                    </xs:extension>
+                                                                  </xs:simpleContent>
+                                                                </xs:complexType>
+                                                              </xs:element>
+                                                            </xs:sequence>
+                                                          </xs:complexType>
+                                                        </xs:element>
+                                                      </xs:sequence>
+                                                    </xs:complexType>
+                                                  </xs:element>
+                                                  <xs:element name="asContent" maxOccurs="unbounded" minOccurs="0">
+                                                    <xs:annotation>
+                                                      <xs:documentation>Package Hierarchy #1, Configuration #1: DI#201, Quantity in Package=4, Package type=carton, Package Discontinue Date=9/1/2014, Contains base package DI#101Package Hierarchy #2, Configuration #3: DI#401, Quantity in Package=4, Package type=carton, Package Discontinue Date=9/1/2014, Contains base package DI#101</xs:documentation>
+                                                    </xs:annotation>
+                                                    <xs:complexType>
+                                                      <xs:sequence>
+                                                        <xs:element name="quantity">
+                                                          <xs:complexType>
+                                                            <xs:sequence>
+                                                              <xs:element name="numerator">
+                                                                <xs:complexType>
+                                                                  <xs:simpleContent>
+                                                                    <xs:extension base="xs:string">
+                                                                      <xs:attribute type="xs:byte" name="value" use="optional"/>
+                                                                    </xs:extension>
+                                                                  </xs:simpleContent>
+                                                                </xs:complexType>
+                                                              </xs:element>
+                                                              <xs:element type="xs:string" name="denominator"/>
+                                                            </xs:sequence>
+                                                          </xs:complexType>
+                                                        </xs:element>
+                                                        <xs:element name="containerPackagedProduct">
+                                                          <xs:annotation>
+                                                            <xs:documentation>code@code is the device identifier value DI#= 401code@codeSystem is the OID for the issuing agency for the device identifier, GS1 (1.3.160)name is the package type, "carton"capacityQuantity@value is the quantity per package, 4</xs:documentation>
+                                                          </xs:annotation>
+                                                          <xs:complexType>
+                                                            <xs:sequence>
+                                                              <xs:element name="code">
+                                                                <xs:annotation>
+                                                                  <xs:documentation>code@code is the device identifier value DI#= 201code@codeSystem is the OID for the issuing agency for the device identifier, GS1 (1.3.160)name is the package type, "carton"capacityQuantity@value is the quantity per package, 4</xs:documentation>
+                                                                </xs:annotation>
+                                                                <xs:complexType>
+                                                                  <xs:simpleContent>
+                                                                    <xs:extension base="xs:string">
+                                                                      <xs:attribute type="xs:short" name="code" use="optional"/>
+                                                                      <xs:attribute type="xs:string" name="codeSystem" use="optional"/>
+                                                                    </xs:extension>
+                                                                  </xs:simpleContent>
+                                                                </xs:complexType>
+                                                              </xs:element>
+                                                              <xs:element type="xs:string" name="name"/>
+                                                              <xs:element name="capacityQuantity">
+                                                                <xs:complexType>
+                                                                  <xs:simpleContent>
+                                                                    <xs:extension base="xs:string">
+                                                                      <xs:attribute type="xs:byte" name="value" use="optional"/>
+                                                                    </xs:extension>
+                                                                  </xs:simpleContent>
+                                                                </xs:complexType>
+                                                              </xs:element>
+                                                              <xs:element name="asManufacturedProduct">
+                                                                <xs:complexType>
+                                                                  <xs:sequence>
+                                                                    <xs:element name="subjectOf">
+                                                                      <xs:complexType>
+                                                                        <xs:sequence>
+                                                                          <xs:element name="marketingAct">
+                                                                            <xs:complexType>
+                                                                              <xs:sequence>
+                                                                                <xs:element name="effectiveTime">
+                                                                                  <xs:annotation>
+                                                                                    <xs:documentation>effectiveTime.high@value is the Package Device discontinued Date, 20140901effectiveTime.high@value is the Package Device discontinued Date, 20140901</xs:documentation>
+                                                                                  </xs:annotation>
+                                                                                  <xs:complexType>
+                                                                                    <xs:sequence>
+                                                                                      <xs:element type="xs:string" name="low"/>
+                                                                                      <xs:element name="high">
+                                                                                        <xs:complexType>
+                                                                                          <xs:simpleContent>
+                                                                                            <xs:extension base="xs:string">
+                                                                                              <xs:attribute type="xs:int" name="value" use="optional"/>
+                                                                                            </xs:extension>
+                                                                                          </xs:simpleContent>
+                                                                                        </xs:complexType>
+                                                                                      </xs:element>
+                                                                                    </xs:sequence>
+                                                                                  </xs:complexType>
+                                                                                </xs:element>
+                                                                              </xs:sequence>
+                                                                            </xs:complexType>
+                                                                          </xs:element>
+                                                                        </xs:sequence>
+                                                                      </xs:complexType>
+                                                                    </xs:element>
+                                                                  </xs:sequence>
+                                                                </xs:complexType>
+                                                              </xs:element>
+                                                              <xs:element name="asContent" maxOccurs="unbounded" minOccurs="0">
+                                                                <xs:annotation>
+                                                                  <xs:documentation>Package hierarchy #1, Configuration #2: DI#301, Quantity in Package=5, Package type=case, Package Discontinue Date=9/1/2014, Contains DI#-201</xs:documentation>
+                                                                </xs:annotation>
+                                                                <xs:complexType>
+                                                                  <xs:sequence>
+                                                                    <xs:element name="containerPackagedProduct">
+                                                                      <xs:annotation>
+                                                                        <xs:documentation>Package hierarchy #2, Configuration #4: DI#501, Quantity in Package=5, Package type=case, Package Discontinue Date=9/1/2014, Contains DI#-401code@code is the device identifier value DI#= 501code@codeSystem is the OID for the issuing agency for the device identifier, GS1 (1.3.160)name is the package type, "caes"capacityQuantity@value is the quantity per package, 5</xs:documentation>
+                                                                      </xs:annotation>
+                                                                      <xs:complexType>
+                                                                        <xs:sequence>
+                                                                          <xs:element name="code">
+                                                                            <xs:annotation>
+                                                                              <xs:documentation>code@code is the device identifier value DI#= 301code@codeSystem is the OID for the issuing agency for the device identifier, GS1 (1.3.160)name is the package type, "caes"capacityQuantity@value is the quantity per package, 5</xs:documentation>
+                                                                            </xs:annotation>
+                                                                            <xs:complexType>
+                                                                              <xs:simpleContent>
+                                                                                <xs:extension base="xs:string">
+                                                                                  <xs:attribute type="xs:short" name="code" use="optional"/>
+                                                                                  <xs:attribute type="xs:string" name="codeSystem" use="optional"/>
+                                                                                </xs:extension>
+                                                                              </xs:simpleContent>
+                                                                            </xs:complexType>
+                                                                          </xs:element>
+                                                                          <xs:element type="xs:string" name="name"/>
+                                                                          <xs:element name="capacityQuantity">
+                                                                            <xs:complexType>
+                                                                              <xs:simpleContent>
+                                                                                <xs:extension base="xs:string">
+                                                                                  <xs:attribute type="xs:byte" name="value" use="optional"/>
+                                                                                </xs:extension>
+                                                                              </xs:simpleContent>
+                                                                            </xs:complexType>
+                                                                          </xs:element>
+                                                                          <xs:element name="asManufacturedProduct">
+                                                                            <xs:complexType>
+                                                                              <xs:sequence>
+                                                                                <xs:element name="subjectOf">
+                                                                                  <xs:complexType>
+                                                                                    <xs:sequence>
+                                                                                      <xs:element name="marketingAct">
+                                                                                        <xs:complexType>
+                                                                                          <xs:sequence>
+                                                                                            <xs:element name="effectiveTime">
+                                                                                              <xs:annotation>
+                                                                                                <xs:documentation>effectiveTime.high@value is the Package Device discontinued Date, 20140901effectiveTime.high@value is the Package Device discontinued Date, 20140901</xs:documentation>
+                                                                                              </xs:annotation>
+                                                                                              <xs:complexType>
+                                                                                                <xs:sequence>
+                                                                                                  <xs:element type="xs:string" name="low"/>
+                                                                                                  <xs:element name="high">
+                                                                                                    <xs:complexType>
+                                                                                                      <xs:simpleContent>
+                                                                                                        <xs:extension base="xs:string">
+                                                                                                          <xs:attribute type="xs:int" name="value" use="optional"/>
+                                                                                                        </xs:extension>
+                                                                                                      </xs:simpleContent>
+                                                                                                    </xs:complexType>
+                                                                                                  </xs:element>
+                                                                                                </xs:sequence>
+                                                                                              </xs:complexType>
+                                                                                            </xs:element>
+                                                                                          </xs:sequence>
+                                                                                        </xs:complexType>
+                                                                                      </xs:element>
+                                                                                    </xs:sequence>
+                                                                                  </xs:complexType>
+                                                                                </xs:element>
+                                                                              </xs:sequence>
+                                                                            </xs:complexType>
+                                                                          </xs:element>
+                                                                          <xs:element name="asContent" maxOccurs="unbounded" minOccurs="0">
+                                                                <xs:annotation>
+                                                                  <xs:documentation>Package hierarchy #1, Configuration #2: DI#301, Quantity in Package=5, Package type=case, Package Discontinue Date=9/1/2014, Contains DI#-201</xs:documentation>
+                                                                </xs:annotation>
+                                                                <xs:complexType>
+                                                                  <xs:sequence>
+                                                                    <xs:element name="containerPackagedProduct">
+                                                                      <xs:annotation>
+                                                                        <xs:documentation>Package hierarchy #2, Configuration #4: DI#501, Quantity in Package=5, Package type=case, Package Discontinue Date=9/1/2014, Contains DI#-401code@code is the device identifier value DI#= 501code@codeSystem is the OID for the issuing agency for the device identifier, GS1 (1.3.160)name is the package type, "caes"capacityQuantity@value is the quantity per package, 5</xs:documentation>
+                                                                      </xs:annotation>
+                                                                      <xs:complexType>
+                                                                        <xs:sequence>
+                                                                          <xs:element name="code">
+                                                                            <xs:annotation>
+                                                                              <xs:documentation>code@code is the device identifier value DI#= 301code@codeSystem is the OID for the issuing agency for the device identifier, GS1 (1.3.160)name is the package type, "caes"capacityQuantity@value is the quantity per package, 5</xs:documentation>
+                                                                            </xs:annotation>
+                                                                            <xs:complexType>
+                                                                              <xs:simpleContent>
+                                                                                <xs:extension base="xs:string">
+                                                                                  <xs:attribute type="xs:short" name="code" use="optional"/>
+                                                                                  <xs:attribute type="xs:string" name="codeSystem" use="optional"/>
+                                                                                </xs:extension>
+                                                                              </xs:simpleContent>
+                                                                            </xs:complexType>
+                                                                          </xs:element>
+                                                                          <xs:element type="xs:string" name="name"/>
+                                                                          <xs:element name="capacityQuantity">
+                                                                            <xs:complexType>
+                                                                              <xs:simpleContent>
+                                                                                <xs:extension base="xs:string">
+                                                                                  <xs:attribute type="xs:byte" name="value" use="optional"/>
+                                                                                </xs:extension>
+                                                                              </xs:simpleContent>
+                                                                            </xs:complexType>
+                                                                          </xs:element>
+                                                                          <xs:element name="asManufacturedProduct">
+                                                                            <xs:complexType>
+                                                                              <xs:sequence>
+                                                                                <xs:element name="subjectOf">
+                                                                                  <xs:complexType>
+                                                                                    <xs:sequence>
+                                                                                      <xs:element name="marketingAct">
+                                                                                        <xs:complexType>
+                                                                                          <xs:sequence>
+                                                                                            <xs:element name="effectiveTime">
+                                                                                              <xs:annotation>
+                                                                                                <xs:documentation>effectiveTime.high@value is the Package Device discontinued Date, 20140901effectiveTime.high@value is the Package Device discontinued Date, 20140901</xs:documentation>
+                                                                                              </xs:annotation>
+                                                                                              <xs:complexType>
+                                                                                                <xs:sequence>
+                                                                                                  <xs:element type="xs:string" name="low"/>
+                                                                                                  <xs:element name="high">
+                                                                                                    <xs:complexType>
+                                                                                                      <xs:simpleContent>
+                                                                                                        <xs:extension base="xs:string">
+                                                                                                          <xs:attribute type="xs:int" name="value" use="optional"/>
+                                                                                                        </xs:extension>
+                                                                                                      </xs:simpleContent>
+                                                                                                    </xs:complexType>
+                                                                                                  </xs:element>
+                                                                                                </xs:sequence>
+                                                                                              </xs:complexType>
+                                                                                            </xs:element>
+                                                                                          </xs:sequence>
+                                                                                        </xs:complexType>
+                                                                                      </xs:element>
+                                                                                    </xs:sequence>
+                                                                                  </xs:complexType>
+                                                                                </xs:element>
+                                                                              </xs:sequence>
+                                                                            </xs:complexType>
+                                                                          </xs:element>
+                                                                          <xs:element name="asContent" maxOccurs="unbounded" minOccurs="0">
+                                                                <xs:annotation>
+                                                                  <xs:documentation>Package hierarchy #1, Configuration #2: DI#301, Quantity in Package=5, Package type=case, Package Discontinue Date=9/1/2014, Contains DI#-201</xs:documentation>
+                                                                </xs:annotation>
+                                                                <xs:complexType>
+                                                                  <xs:sequence>
+                                                                    <xs:element name="containerPackagedProduct">
+                                                                      <xs:annotation>
+                                                                        <xs:documentation>Package hierarchy #2, Configuration #4: DI#501, Quantity in Package=5, Package type=case, Package Discontinue Date=9/1/2014, Contains DI#-401code@code is the device identifier value DI#= 501code@codeSystem is the OID for the issuing agency for the device identifier, GS1 (1.3.160)name is the package type, "caes"capacityQuantity@value is the quantity per package, 5</xs:documentation>
+                                                                      </xs:annotation>
+                                                                      <xs:complexType>
+                                                                        <xs:sequence>
+                                                                          <xs:element name="code">
+                                                                            <xs:annotation>
+                                                                              <xs:documentation>code@code is the device identifier value DI#= 301code@codeSystem is the OID for the issuing agency for the device identifier, GS1 (1.3.160)name is the package type, "caes"capacityQuantity@value is the quantity per package, 5</xs:documentation>
+                                                                            </xs:annotation>
+                                                                            <xs:complexType>
+                                                                              <xs:simpleContent>
+                                                                                <xs:extension base="xs:string">
+                                                                                  <xs:attribute type="xs:short" name="code" use="optional"/>
+                                                                                  <xs:attribute type="xs:string" name="codeSystem" use="optional"/>
+                                                                                </xs:extension>
+                                                                              </xs:simpleContent>
+                                                                            </xs:complexType>
+                                                                          </xs:element>
+                                                                          <xs:element type="xs:string" name="name"/>
+                                                                          <xs:element name="capacityQuantity">
+                                                                            <xs:complexType>
+                                                                              <xs:simpleContent>
+                                                                                <xs:extension base="xs:string">
+                                                                                  <xs:attribute type="xs:byte" name="value" use="optional"/>
+                                                                                </xs:extension>
+                                                                              </xs:simpleContent>
+                                                                            </xs:complexType>
+                                                                          </xs:element>
+                                                                          <xs:element name="asManufacturedProduct">
+                                                                            <xs:complexType>
+                                                                              <xs:sequence>
+                                                                                <xs:element name="subjectOf">
+                                                                                  <xs:complexType>
+                                                                                    <xs:sequence>
+                                                                                      <xs:element name="marketingAct">
+                                                                                        <xs:complexType>
+                                                                                          <xs:sequence>
+                                                                                            <xs:element name="effectiveTime">
+                                                                                              <xs:annotation>
+                                                                                                <xs:documentation>effectiveTime.high@value is the Package Device discontinued Date, 20140901effectiveTime.high@value is the Package Device discontinued Date, 20140901</xs:documentation>
+                                                                                              </xs:annotation>
+                                                                                              <xs:complexType>
+                                                                                                <xs:sequence>
+                                                                                                  <xs:element type="xs:string" name="low"/>
+                                                                                                  <xs:element name="high">
+                                                                                                    <xs:complexType>
+                                                                                                      <xs:simpleContent>
+                                                                                                        <xs:extension base="xs:string">
+                                                                                                          <xs:attribute type="xs:int" name="value" use="optional"/>
+                                                                                                        </xs:extension>
+                                                                                                      </xs:simpleContent>
+                                                                                                    </xs:complexType>
+                                                                                                  </xs:element>
+                                                                                                </xs:sequence>
+                                                                                              </xs:complexType>
+                                                                                            </xs:element>
+                                                                                          </xs:sequence>
+                                                                                        </xs:complexType>
+                                                                                      </xs:element>
+                                                                                    </xs:sequence>
+                                                                                  </xs:complexType>
+                                                                                </xs:element>
+                                                                              </xs:sequence>
+                                                                            </xs:complexType>
+                                                                          </xs:element>
+                                                                          <xs:element name="asContent" maxOccurs="unbounded" minOccurs="0">
+                                                                <xs:annotation>
+                                                                  <xs:documentation>Package hierarchy #1, Configuration #2: DI#301, Quantity in Package=5, Package type=case, Package Discontinue Date=9/1/2014, Contains DI#-201</xs:documentation>
+                                                                </xs:annotation>
+                                                                <xs:complexType>
+                                                                  <xs:sequence>
+                                                                    <xs:element name="containerPackagedProduct">
+                                                                      <xs:annotation>
+                                                                        <xs:documentation>Package hierarchy #2, Configuration #4: DI#501, Quantity in Package=5, Package type=case, Package Discontinue Date=9/1/2014, Contains DI#-401code@code is the device identifier value DI#= 501code@codeSystem is the OID for the issuing agency for the device identifier, GS1 (1.3.160)name is the package type, "caes"capacityQuantity@value is the quantity per package, 5</xs:documentation>
+                                                                      </xs:annotation>
+                                                                      <xs:complexType>
+                                                                        <xs:sequence>
+                                                                          <xs:element name="code">
+                                                                            <xs:annotation>
+                                                                              <xs:documentation>code@code is the device identifier value DI#= 301code@codeSystem is the OID for the issuing agency for the device identifier, GS1 (1.3.160)name is the package type, "caes"capacityQuantity@value is the quantity per package, 5</xs:documentation>
+                                                                            </xs:annotation>
+                                                                            <xs:complexType>
+                                                                              <xs:simpleContent>
+                                                                                <xs:extension base="xs:string">
+                                                                                  <xs:attribute type="xs:short" name="code" use="optional"/>
+                                                                                  <xs:attribute type="xs:string" name="codeSystem" use="optional"/>
+                                                                                </xs:extension>
+                                                                              </xs:simpleContent>
+                                                                            </xs:complexType>
+                                                                          </xs:element>
+                                                                          <xs:element type="xs:string" name="name"/>
+                                                                          <xs:element name="capacityQuantity">
+                                                                            <xs:complexType>
+                                                                              <xs:simpleContent>
+                                                                                <xs:extension base="xs:string">
+                                                                                  <xs:attribute type="xs:byte" name="value" use="optional"/>
+                                                                                </xs:extension>
+                                                                              </xs:simpleContent>
+                                                                            </xs:complexType>
+                                                                          </xs:element>
+                                                                          <xs:element name="asManufacturedProduct">
+                                                                            <xs:complexType>
+                                                                              <xs:sequence>
+                                                                                <xs:element name="subjectOf">
+                                                                                  <xs:complexType>
+                                                                                    <xs:sequence>
+                                                                                      <xs:element name="marketingAct">
+                                                                                        <xs:complexType>
+                                                                                          <xs:sequence>
+                                                                                            <xs:element name="effectiveTime">
+                                                                                              <xs:annotation>
+                                                                                                <xs:documentation>effectiveTime.high@value is the Package Device discontinued Date, 20140901effectiveTime.high@value is the Package Device discontinued Date, 20140901</xs:documentation>
+                                                                                              </xs:annotation>
+                                                                                              <xs:complexType>
+                                                                                                <xs:sequence>
+                                                                                                  <xs:element type="xs:string" name="low"/>
+                                                                                                  <xs:element name="high">
+                                                                                                    <xs:complexType>
+                                                                                                      <xs:simpleContent>
+                                                                                                        <xs:extension base="xs:string">
+                                                                                                          <xs:attribute type="xs:int" name="value" use="optional"/>
+                                                                                                        </xs:extension>
+                                                                                                      </xs:simpleContent>
+                                                                                                    </xs:complexType>
+                                                                                                  </xs:element>
+                                                                                                </xs:sequence>
+                                                                                              </xs:complexType>
+                                                                                            </xs:element>
+                                                                                          </xs:sequence>
+                                                                                        </xs:complexType>
+                                                                                      </xs:element>
+                                                                                    </xs:sequence>
+                                                                                  </xs:complexType>
+                                                                                </xs:element>
+                                                                              </xs:sequence>
+                                                                            </xs:complexType>
+                                                                          </xs:element>
+                                                                        </xs:sequence>
+                                                                      </xs:complexType>
+                                                                    </xs:element>
+                                                                  </xs:sequence>
+                                                                </xs:complexType>
+                                                              </xs:element>
+                                                                        </xs:sequence>
+                                                                      </xs:complexType>
+                                                                    </xs:element>
+                                                                  </xs:sequence>
+                                                                </xs:complexType>
+                                                              </xs:element>
+                                                                        </xs:sequence>
+                                                                      </xs:complexType>
+                                                                    </xs:element>
+                                                                  </xs:sequence>
+                                                                </xs:complexType>
+                                                              </xs:element>
+                                                                        </xs:sequence>
+                                                                      </xs:complexType>
+                                                                    </xs:element>
+                                                                  </xs:sequence>
+                                                                </xs:complexType>
+                                                              </xs:element>
+                                                            </xs:sequence>
+                                                          </xs:complexType>
+                                                        </xs:element>
+                                                      </xs:sequence>
+                                                    </xs:complexType>
+                                                  </xs:element>
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                            <xs:element name="subjectOfType1" maxOccurs="unbounded" minOccurs="0">
+                                              <xs:annotation>
+                                                <xs:documentation>Premarket Authorization NumberProduction Identifier on Label - Serial Number (required)code@code, C101671 is the code for Controlled by Serial numbercode@codeSystem, 2.16.840.1.113883.3.26.1.1 is the OID for NCItvalue@xsi:type is required to indicate the characteristic has a Boolean data typevalue@value is True or False Sterilization Method - If this value is false for the question "Is the product packaged as sterile", this element will be required.   "Requires sterilization prior to use" (code=C84382) can be present in the message with a yes or no to the previous question - Is the device labeled as sterile.  If sterilization method code (e.g., C101712- Dry Heat) is provided and matches the sterilization values - the question - requires sterilization prior to use will be marked "True" If this element is not present, and the previous value is "False". code@code, C84382 indicates the package needs to be sterilized prior to usecode@codeSystem, 2.16.840.1.113883.3.26.1.1 is the OID for NCItHCT/Pcode@code, C101674 is the code for HCT/Pcode@codeSystem, 2.16.840.1.113883.3.26.1.1 is the OID for NCItvalue@xsi:type is required to indicate the characteristic has a Boolean data typevalue@value is True or False Kitcode@code, C50021 is the code for Kitscode@codeSystem, 2.16.840.1.113883.3.26.1.1 is the OID for NCItvalue@xsi:type is required to indicate the characteristic has a Boolean data typevalue@value is True or False Combination Productcode@code, C54696 is the code for Combination Productscode@codeSystem, 2.16.840.1.113883.3.26.1.1 is the OID for NCItvalue@xsi:type is required to indicate the characteristic has a Boolean data typevalue@value is True or False DM Exemptcode@code, C101679 is the code for DM Exemptcode@codeSystem, 2.16.840.1.113883.3.26.1.1 is the OID for NCItvalue@xsi:type is required to indicate the characteristic has a Boolean data typevalue@value is True or False MRI Safetycode@code, C106044 is the code for MRI Safetycode@codeSystem, 2.16.840.1.113883.3.26.1.1 is the OID for NCItPrescription Use (RX)code@code, C28180 is the code for Prescription Usecode@codeSystem, 2.16.840.1.113883.3.26.1.1 is the OID for NCItvalue@xsi:type is required to indicate the characteristic has a Boolean data typevalue@value is True or False Over the Counter (OTC)code@code, C54068 is the code for Over the Countercode@codeSystem, 2.16.840.1.113883.3.26.1.1 is the OID for NCItvalue@xsi:type is required to indicate the characteristic has a Boolean data typevalue@value is True or False</xs:documentation>
+                                              </xs:annotation>
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element name="document" minOccurs="0">
+                                                    <xs:complexType>
+                                                      <xs:sequence>
+                                                        <xs:element name="author">
+                                                          <xs:complexType>
+                                                            <xs:sequence>
+                                                              <xs:element name="assignedEntity">
+                                                                <xs:complexType>
+                                                                  <xs:sequence>
+                                                                    <xs:element name="representedOrganization">
+                                                                      <xs:complexType>
+                                                                        <xs:sequence>
+                                                                          <xs:element name="assignedEntity1" nillable = "true">
+                                                                            <xs:complexType>
+                                                                              <xs:sequence>
+                                                                                <xs:element name="code">
+                                                                                  <xs:complexType>
+                                                                                    <xs:simpleContent>
+                                                                                      <xs:extension base="xs:string">
+                                                                                        <xs:attribute type="xs:string" name="code"/>
+                                                                                        <xs:attribute type="xs:string" name="codeSystem"/>
+                                                                                      </xs:extension>
+                                                                                    </xs:simpleContent>
+                                                                                  </xs:complexType>
+                                                                                </xs:element>
+                                                                                <xs:element name="representedOrganization" nillable = "true">
+                                                                                  <xs:annotation>
+                                                                                    <xs:documentation>id@root,1.3.6.1.4.1.519.1 is the OID for Dun and Bradstreetid@extension=DUNS number for the Labeler Organization to be listed for the individual medical device.t</xs:documentation>
+                                                                                  </xs:annotation>
+                                                                                  <xs:complexType>
+                                                                                    <xs:sequence>
+                                                                                      <xs:element name="id">
+                                                                                        <xs:complexType>
+                                                                                          <xs:simpleContent>
+                                                                                            <xs:extension base="xs:string">
+                                                                                              <xs:attribute type="xs:string" name="root"/>
+                                                                                              <xs:attribute type="xs:int" name="extension"/>
+                                                                                            </xs:extension>
+                                                                                          </xs:simpleContent>
+                                                                                        </xs:complexType>
+                                                                                      </xs:element>
+                                                                                    </xs:sequence>
+                                                                                  </xs:complexType>
+                                                                                </xs:element>
+                                                                              </xs:sequence>
+                                                                            </xs:complexType>
+                                                                          </xs:element>
+                                                                          <xs:element name="contactParty" maxOccurs="unbounded" minOccurs="0">
+                                                                            <xs:annotation>
+                                                                              <xs:documentation>A phone number and email must be provided for each contactParty element provided.  The contactParty can be repeated as often as possible.</xs:documentation>
+                                                                            </xs:annotation>
+                                                                            <xs:complexType>
+                                                                              <xs:sequence>
+                                                                                <xs:element name="telecom" maxOccurs="unbounded" minOccurs="0">
+                                                                                  <xs:complexType>
+                                                                                    <xs:simpleContent>
+                                                                                      <xs:extension base="xs:string">
+                                                                                        <xs:attribute type="xs:string" name="value" use="optional"/>
+                                                                                        <xs:attribute type="xs:string" name="use" use="optional"/>
+                                                                                      </xs:extension>
+                                                                                    </xs:simpleContent>
+                                                                                  </xs:complexType>
+                                                                                </xs:element>
+                                                                                <xs:element type="xs:string" name="contactPerson"/>
+                                                                              </xs:sequence>
+                                                                            </xs:complexType>
+                                                                          </xs:element>
+                                                                        </xs:sequence>
+                                                                      </xs:complexType>
+                                                                    </xs:element>
+                                                                  </xs:sequence>
+                                                                </xs:complexType>
+                                                              </xs:element>
+                                                            </xs:sequence>
+                                                          </xs:complexType>
+                                                        </xs:element>
+                                                      </xs:sequence>
+                                                    </xs:complexType>
+                                                  </xs:element>
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                            <xs:element name="subjectOf" maxOccurs="unbounded" minOccurs="0">
+                                                                                  <xs:complexType>
+                                                                                    <xs:sequence>
+                                                                                      <xs:element name="marketingAct">
+                                                                                        <xs:complexType>
+                                                                                          <xs:sequence>
+                                                                                            <xs:element name="effectiveTime">
+                                                                                              <xs:annotation>
+                                                                                                <xs:documentation>effectiveTime.high@value is the Package Device discontinued Date, 20140901effectiveTime.high@value is the Package Device discontinued Date, 20140901</xs:documentation>
+                                                                                              </xs:annotation>
+                                                                                              <xs:complexType>
+                                                                                                <xs:sequence>
+                                                                                                  <xs:element type="xs:string" name="low"/>
+                                                                                                  <xs:element name="high">
+                                                                                                    <xs:complexType>
+                                                                                                      <xs:simpleContent>
+                                                                                                        <xs:extension base="xs:string">
+                                                                                                          <xs:attribute type="xs:int" name="value" use="optional"/>
+                                                                                                        </xs:extension>
+                                                                                                      </xs:simpleContent>
+                                                                                                    </xs:complexType>
+                                                                                                  </xs:element>
+                                                                                                </xs:sequence>
+                                                                                              </xs:complexType>
+                                                                                            </xs:element>
+                                                                                          </xs:sequence>
+                                                                                        </xs:complexType>
+                                                                                      </xs:element>
+                                                                                    </xs:sequence>
+                                                                                  </xs:complexType>
+                                                                                </xs:element>
+                                            <xs:element name="subjectOfType2" maxOccurs="unbounded" minOccurs="0">
+                                              <xs:annotation>
+                                                <xs:documentation>Premarket Authorization NumberProduction Identifier on Label - Serial Number (required)code@code, C101671 is the code for Controlled by Serial numbercode@codeSystem, 2.16.840.1.113883.3.26.1.1 is the OID for NCItvalue@xsi:type is required to indicate the characteristic has a Boolean data typevalue@value is True or False Sterilization Method - If this value is false for the question "Is the product packaged as sterile", this element will be required.   "Requires sterilization prior to use" (code=C84382) can be present in the message with a yes or no to the previous question - Is the device labeled as sterile.  If sterilization method code (e.g., C101712- Dry Heat) is provided and matches the sterilization values - the question - requires sterilization prior to use will be marked "True" If this element is not present, and the previous value is "False". code@code, C84382 indicates the package needs to be sterilized prior to usecode@codeSystem, 2.16.840.1.113883.3.26.1.1 is the OID for NCItHCT/Pcode@code, C101674 is the code for HCT/Pcode@codeSystem, 2.16.840.1.113883.3.26.1.1 is the OID for NCItvalue@xsi:type is required to indicate the characteristic has a Boolean data typevalue@value is True or False Kitcode@code, C50021 is the code for Kitscode@codeSystem, 2.16.840.1.113883.3.26.1.1 is the OID for NCItvalue@xsi:type is required to indicate the characteristic has a Boolean data typevalue@value is True or False Combination Productcode@code, C54696 is the code for Combination Productscode@codeSystem, 2.16.840.1.113883.3.26.1.1 is the OID for NCItvalue@xsi:type is required to indicate the characteristic has a Boolean data typevalue@value is True or False DM Exemptcode@code, C101679 is the code for DM Exemptcode@codeSystem, 2.16.840.1.113883.3.26.1.1 is the OID for NCItvalue@xsi:type is required to indicate the characteristic has a Boolean data typevalue@value is True or False MRI Safetycode@code, C106044 is the code for MRI Safetycode@codeSystem, 2.16.840.1.113883.3.26.1.1 is the OID for NCItPrescription Use (RX)code@code, C28180 is the code for Prescription Usecode@codeSystem, 2.16.840.1.113883.3.26.1.1 is the OID for NCItvalue@xsi:type is required to indicate the characteristic has a Boolean data typevalue@value is True or False Over the Counter (OTC)code@code, C54068 is the code for Over the Countercode@codeSystem, 2.16.840.1.113883.3.26.1.1 is the OID for NCItvalue@xsi:type is required to indicate the characteristic has a Boolean data typevalue@value is True or False</xs:documentation>
+                                              </xs:annotation>
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element name="approval" minOccurs="0">
+                                                    <xs:complexType>
+                                                      <xs:sequence>
+                                                        <xs:element name="id" minOccurs="0">
+                                                          <xs:annotation>
+                                                            <xs:documentation>id@root is the OID for the CDRH Tracking Systems (2.16.840.1.113883.3.150) the id@extension is the premarket approval/authorization number assigned by CDRHcode@code, C80441 is the code for a Premarket Approvalcode@codeSystem, 2.16.840.1.113883.3.26.1.1 is the OID for NCItTo provide a second authorization number with the same id.extension should be contained in a new serialized element for approval. This follows the same instructions as the previous example.FDA Listing Number (As many listing numbers as applicable can be added)id@root = 2.16.840.1.113883.3.150 is for FDA Tracking Systems Identifierid@extension = FDA Listing Numbercode@code, C101677 is the code for FDA Listing Numbercode@codeSystem, 2.16.840.1.113883.3.26.1.1 is the OID for NCIt</xs:documentation>
+                                                          </xs:annotation>
+                                                          <xs:complexType>
+                                                            <xs:simpleContent>
+                                                              <xs:extension base="xs:string">
+                                                                <xs:attribute type="xs:string" name="root" use="optional"/>
+                                                                <xs:attribute type="xs:string" name="extension" use="optional"/>
+                                                              </xs:extension>
+                                                            </xs:simpleContent>
+                                                          </xs:complexType>
+                                                        </xs:element>
+                                                        <xs:element name="code">
+                                                          <xs:complexType>
+                                                            <xs:simpleContent>
+                                                              <xs:extension base="xs:string">
+                                                                <xs:attribute type="xs:string" name="code" use="optional"/>
+                                                                <xs:attribute type="xs:string" name="codeSystem" use="optional"/>
+                                                              </xs:extension>
+                                                            </xs:simpleContent>
+                                                          </xs:complexType>
+                                                        </xs:element>
+                                                        <xs:element name="component" minOccurs="0">
+                                                          <xs:annotation>
+                                                            <xs:documentation>The typeCode is a required attibute to pass schema validation.  It should be set to "COMP"</xs:documentation>
+                                                          </xs:annotation>
+                                                          <xs:complexType>
+                                                            <xs:sequence>
+                                                              <xs:element name="approval">
+                                                                <xs:complexType>
+                                                                  <xs:sequence>
+                                                                    <xs:element name="id">
+                                                                      <xs:annotation>
+                                                                        <xs:documentation>code@code, C70862 is the temporary code for a Premarket Approval supplementcode@codeSystem, 2.16.840.1.113883.3.26.1.1 is the OID for NCIt</xs:documentation>
+                                                                      </xs:annotation>
+                                                                      <xs:complexType>
+                                                                        <xs:simpleContent>
+                                                                          <xs:extension base="xs:string">
+                                                                            <xs:attribute type="xs:string" name="root" use="optional"/>
+                                                                            <xs:attribute type="xs:byte" name="extension" use="optional"/>
+                                                                          </xs:extension>
+                                                                        </xs:simpleContent>
+                                                                      </xs:complexType>
+                                                                    </xs:element>
+                                                                    <xs:element name="code">
+                                                                      <xs:complexType>
+                                                                        <xs:simpleContent>
+                                                                          <xs:extension base="xs:string">
+                                                                            <xs:attribute type="xs:string" name="code" use="optional"/>
+                                                                            <xs:attribute type="xs:string" name="codeSystem" use="optional"/>
+                                                                          </xs:extension>
+                                                                        </xs:simpleContent>
+                                                                      </xs:complexType>
+                                                                    </xs:element>
+                                                                  </xs:sequence>
+                                                                </xs:complexType>
+                                                              </xs:element>
+                                                            </xs:sequence>
+                                                            <xs:attribute type="xs:string" name="typeCode" use="optional"/>
+                                                          </xs:complexType>
+                                                        </xs:element>
+                                                      </xs:sequence>
+                                                    </xs:complexType>
+                                                  </xs:element>
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                            <xs:element name="subjectOfType3" maxOccurs="unbounded" minOccurs="0">
+                                              <xs:annotation>
+                                                <xs:documentation>Premarket Authorization NumberProduction Identifier on Label - Serial Number (required)code@code, C101671 is the code for Controlled by Serial numbercode@codeSystem, 2.16.840.1.113883.3.26.1.1 is the OID for NCItvalue@xsi:type is required to indicate the characteristic has a Boolean data typevalue@value is True or False Sterilization Method - If this value is false for the question "Is the product packaged as sterile", this element will be required.   "Requires sterilization prior to use" (code=C84382) can be present in the message with a yes or no to the previous question - Is the device labeled as sterile.  If sterilization method code (e.g., C101712- Dry Heat) is provided and matches the sterilization values - the question - requires sterilization prior to use will be marked "True" If this element is not present, and the previous value is "False". code@code, C84382 indicates the package needs to be sterilized prior to usecode@codeSystem, 2.16.840.1.113883.3.26.1.1 is the OID for NCItHCT/Pcode@code, C101674 is the code for HCT/Pcode@codeSystem, 2.16.840.1.113883.3.26.1.1 is the OID for NCItvalue@xsi:type is required to indicate the characteristic has a Boolean data typevalue@value is True or False Kitcode@code, C50021 is the code for Kitscode@codeSystem, 2.16.840.1.113883.3.26.1.1 is the OID for NCItvalue@xsi:type is required to indicate the characteristic has a Boolean data typevalue@value is True or False Combination Productcode@code, C54696 is the code for Combination Productscode@codeSystem, 2.16.840.1.113883.3.26.1.1 is the OID for NCItvalue@xsi:type is required to indicate the characteristic has a Boolean data typevalue@value is True or False DM Exemptcode@code, C101679 is the code for DM Exemptcode@codeSystem, 2.16.840.1.113883.3.26.1.1 is the OID for NCItvalue@xsi:type is required to indicate the characteristic has a Boolean data typevalue@value is True or False MRI Safetycode@code, C106044 is the code for MRI Safetycode@codeSystem, 2.16.840.1.113883.3.26.1.1 is the OID for NCItPrescription Use (RX)code@code, C28180 is the code for Prescription Usecode@codeSystem, 2.16.840.1.113883.3.26.1.1 is the OID for NCItvalue@xsi:type is required to indicate the characteristic has a Boolean data typevalue@value is True or False Over the Counter (OTC)code@code, C54068 is the code for Over the Countercode@codeSystem, 2.16.840.1.113883.3.26.1.1 is the OID for NCItvalue@xsi:type is required to indicate the characteristic has a Boolean data typevalue@value is True or False</xs:documentation>
+                                              </xs:annotation>
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element name="characteristic" minOccurs="0">
+                                                    <xs:annotation>
+                                                      <xs:documentation>Production Identifier on Label - Lot or Batch Number (required)code@code, C101672 is the code for Controlled by Lot Numbercode@codeSystem, 2.16.840.1.113883.3.26.1.1 is the OID for NCItvalue@xsi:type is required to indicate the characteristic has a Boolean data typevalue@value is True or False Production Identifier on Label - Expiration Date (required)code@code, C101670 is the code for Controlled by Expiration Datecode@codeSystem, 2.16.840.1.113883.3.26.1.1 is the OID for NCItvalue@xsi:type is required to indicate the characteristic has a Boolean data typevalue@value is True or False Production Identifier on Label - Manufacturing Date (required)code@code, C101669 is the code for Controlled by Manufacturing Datecode@codeSystem, 2.16.840.1.113883.3.26.1.1 is the OID for NCItvalue@xsi:type is required to indicate the characteristic has a Boolean data typevalue@value is True or False Production Identifier on Label - Donation Identification Number (required)code@code, C113843 is the code for Donation Identification Numbercode@codeSystem, 2.16.840.1.113883.3.26.1.1 is the OID for NCItvalue@xsi:type is required to indicate the characteristic has a Boolean data typevalue@value is True or False Clinically Relevant Size is a characteristic that can either be sent with a CV or as free text.Clinically Relevant Size - free textcode@code, C106041 is the temporary code for providing a free-text clinically-relevant-size.  For testing, this should be used when size-types are not available in the controlled vocabulary.code@codeSystem, 2.16.840.1.113883.3.26.1.1 is the OID for NCItvalue@xsi:type is required to indicate the characteristic has a String data typevalue element should include the free-text between the value tags, as shown Storage and Handling Requirements (Provide as many as necessary)code@code, C101707 is the code for Storage Environment Temperature; storage-handling-conditions are available.  For testing, only select values are available in the controlled vocabulary.  Additional storage and handling conditions may be added in the future.code@codeSystem, 2.16.840.1.113883.3.26.1.1 is the OID for NCItvalue@xsi:type is required to indicate the characteristic has a Physical Quantity Interval data typevalue.low@value is the measurement value; provide when temperature has a range, provide when the value is less than this value or if the value is exactly this temperature (note- same value will be entered in high@value)value.low@unit is the unit of measurement value.high@value is the measurement value; provide when temperature has a range, provide when the value is greater than this value or if the value is exactly this temperature (note- same value will be entered in low@value)- value.high@unit is the unit of measurement Special Storage Condition Text (provide as many as necessary)code@code, C101704 is the code for providing a free-text special-storage-condition.  For testing, this element should be used when storage-requirements are not available in the controlled vocabulary.code@codeSystem, 2.16.840.1.113883.3.26.1.1 is the OID for NCItvalue@xsi:type is required to indicate the characteristic has a String data typevalue element should include the free-text between the value tags, as shown Sterilization - Is the product packaged as sterile? (required)code@code, C101676 is the code for Packaged as Sterilecode@codeSystem, 2.16.840.1.113883.3.26.1.1 is the OID for NCItvalue@xsi:type is required to indicate the characteristic has a Boolean data typevalue@value is True or False Labeled as Containing Natural Rubber Latex (required)code@code, C101673 is the code for Labeled as Containing Natural Rubber Latexcode@codeSystem, 2.16.840.1.113883.3.26.1.1 is the OID for NCItvalue@xsi:type is required to indicate the characteristic has a Boolean data typevalue@value is True or False Not Made with Natural Rubber Latexcode@code, C106038 is the code for code@codeSystem, 2.16.840.1.113883.3.26.1.1 is the OID for NCItvalue@xsi:type is required to indicate the characteristic has a Boolean data typevalue@value is True or False Single Use (required) code@code, C53602 is the code for Single Usecode@codeSystem, 2.16.840.1.113883.3.26.1.1 is the OID for NCItvalue@xsi:type is required to indicate the characteristic has a Boolean data typevalue@value is True or False</xs:documentation>
+                                                    </xs:annotation>
+                                                    <xs:complexType>
+                                                      <xs:sequence>
+                                                        <xs:element name="code">
+                                                          <xs:annotation>
+                                                            <xs:documentation>code@code, C96684 is the code for longest diameter; clinically-relevant-size-type are available for several known size measures.  For testing, only select values are available in the controlled vocabulary.  Additional size types may be added in the future.code@codeSystem, 2.16.840.1.113883.3.26.1.1 is the OID for NCItvalue@xsi:type is required to indicate the characteristic has a Physical Quantity data typevalue@value is the measurement value value@unit is the unit of measurement</xs:documentation>
+                                                          </xs:annotation>
+                                                          <xs:complexType>
+                                                            <xs:simpleContent>
+                                                              <xs:extension base="xs:string">
+                                                                <xs:attribute type="xs:string" name="code" use="optional"/>
+                                                                <xs:attribute type="xs:string" name="codeSystem" use="optional"/>
+                                                              </xs:extension>
+                                                            </xs:simpleContent>
+                                                          </xs:complexType>
+                                                        </xs:element>
+                                                        <xs:element name="valueSpecialStorage" type="xs:string" minOccurs="0"/>
+                                                        <xs:element name="valueSpecialSizeText" type="xs:string" minOccurs="0"/>
+                                                        <xs:element name="value" minOccurs="0">
+                                                          <xs:annotation>
+                                                            <xs:documentation>value@xsi:type is required to indicate the characteristic has a Coded data typevalue@code, C101676 is the code for Sterilization Method. sterilization-method values are available as per the regulations.  Below the sample has C101712- Dry Heat as an examplevalue@codeSystem, 2.16.840.1.113883.3.26.1.1 is the OID for NCItvalue@xsi:type is required to indicate the characteristic has a Code data typevalue@code is the code value for the MRI Safety Status (MR Safe (C106045), MR Unsafe (C106047) or MR Conditional (C106046))value@codeSystem, 2.16.840.1.113883.3.26.1.1 is the OID for NCIt</xs:documentation>
+                                                          </xs:annotation>
+                                                          <xs:complexType mixed="false">
+                                                            <xs:sequence>
+                                                              <xs:element name="low" minOccurs="0">
+                                                                <xs:complexType>
+                                                                  <xs:simpleContent>
+                                                                    <xs:extension base="xs:string">
+                                                                      <xs:attribute type="xs:byte" name="value"/>
+                                                                      <xs:attribute type="xs:string" name="unit"/>
+                                                                    </xs:extension>
+                                                                  </xs:simpleContent>
+                                                                </xs:complexType>
+                                                              </xs:element>
+                                                              <xs:element name="high" minOccurs="0">
+                                                                <xs:complexType>
+                                                                  <xs:simpleContent>
+                                                                    <xs:extension base="xs:string">
+                                                                      <xs:attribute type="xs:byte" name="value"/>
+                                                                      <xs:attribute type="xs:string" name="unit"/>
+                                                                    </xs:extension>
+                                                                  </xs:simpleContent>
+                                                                </xs:complexType>
+                                                              </xs:element>
+                                                            </xs:sequence>
+                                                            <xs:attribute type="xs:string" name="xsitype" use="optional"/>
+                                                            <xs:attribute type="xs:string" name="value" use="optional"/>
+                                                            <xs:attribute type="xs:string" name="unit" use="optional"/>
+                                                            <xs:attribute type="xs:string" name="code" use="optional"/>
+                                                            <xs:attribute type="xs:string" name="codeSystem" use="optional"/>
+                                                          </xs:complexType>
+                                                        </xs:element>
+                                                      </xs:sequence>
+                                                    </xs:complexType>
+                                                  </xs:element>
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                          </xs:sequence>
+                                          <xs:attribute type="xs:string" name="classCode"/>
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

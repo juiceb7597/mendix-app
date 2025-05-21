@@ -1,0 +1,59 @@
+//
+//
+// ./pages/_pg-prototype-detail.scss
+//
+//
+.pg-prototype-detail {
+	& .container-grid {
+		display: grid;
+		gap: 12px;
+		grid-template-columns: 1fr 1fr 620px;
+		align-items: stretch;
+		justify-content: stretch;
+		& > .mx-layoutgrid {
+			& > .row {
+				display: contents;
+				& > [class*='col'] {
+					width: 100%;
+					height: 100%;
+					&:nth-child(3) {
+						grid-row: 1/3;
+						grid-column: 3/4;
+					}
+					& .card {
+						width: 100%;
+						height: 100%;
+					}
+				}
+			}
+		}
+	}
+	& .container-list {
+		display: flex;
+		flex-direction: column;
+		flex: 1;
+		gap: 24px;
+		& .row {
+			gap: 12px;
+			align-items: center;
+			& [class*='col'] {
+			}
+		}
+	}
+	& .container-img {
+		flex: 1;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background-color: #fff;
+		border-radius: var(--hlcard-border-radius);
+		overflow: hidden;
+	}
+
+	.bom-container {
+		.mx-templategrid-item {
+			padding: 0 !important;
+			border: 0 !important;
+		}
+	}
+}

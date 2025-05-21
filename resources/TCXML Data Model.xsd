@@ -1,0 +1,898 @@
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.tcxml.org/Schemas/TCXMLSchema" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="TCXML">
+    <xs:complexType>
+      <xs:choice maxOccurs="unbounded" minOccurs="0">
+        <xs:element name="Header">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="TransferFormula">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="OptionSet">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="Option" maxOccurs="unbounded" minOccurs="0">
+                            <xs:complexType>
+                              <xs:simpleContent>
+                                <xs:extension base="xs:string">
+                                  <xs:attribute type="xs:string" name="elemId" use="optional"/>
+                                  <xs:attribute type="xs:string" name="name" use="optional"/>
+                                  <xs:attribute type="xs:string" name="value" use="optional"/>
+                                </xs:extension>
+                              </xs:simpleContent>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                        <xs:attribute type="xs:string" name="elemId"/>
+                        <xs:attribute type="xs:string" name="name"/>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="SessionOptions">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="Option" maxOccurs="unbounded" minOccurs="0">
+                            <xs:complexType>
+                              <xs:simpleContent>
+                                <xs:extension base="xs:string">
+                                  <xs:attribute type="xs:string" name="elemId" use="optional"/>
+                                  <xs:attribute type="xs:string" name="name" use="optional"/>
+                                  <xs:attribute type="xs:string" name="value" use="optional"/>
+                                </xs:extension>
+                              </xs:simpleContent>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                        <xs:attribute type="xs:string" name="elemId"/>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="TransferMode">
+                      <xs:complexType>
+                        <xs:simpleContent>
+                          <xs:extension base="xs:string">
+                            <xs:attribute type="xs:string" name="elemId"/>
+                            <xs:attribute type="xs:string" name="object_name"/>
+                          </xs:extension>
+                        </xs:simpleContent>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="Reason">
+                      <xs:complexType>
+                        <xs:simpleContent>
+                          <xs:extension base="xs:string">
+                            <xs:attribute type="xs:string" name="elemId"/>
+                          </xs:extension>
+                        </xs:simpleContent>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                  <xs:attribute type="xs:string" name="elemId"/>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute type="xs:string" name="author"/>
+            <xs:attribute type="xs:dateTime" name="date"/>
+            <xs:attribute type="xs:string" name="elemId"/>
+            <xs:attribute type="xs:int" name="originatingSite"/>
+            <xs:attribute type="xs:string" name="targetSite"/>
+            <xs:attribute type="xs:string" name="version"/>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Person">
+          <xs:complexType>
+            <xs:simpleContent>
+              <xs:extension base="xs:string">
+                <xs:attribute type="xs:byte" name="acl_bits"/>
+                <xs:attribute type="xs:dateTime" name="creation_date"/>
+                <xs:attribute type="xs:string" name="elemId"/>
+                <xs:attribute type="xs:byte" name="island_id"/>
+                <xs:attribute type="xs:dateTime" name="last_mod_date"/>
+                <xs:attribute type="xs:string" name="last_mod_user"/>
+                <xs:attribute type="xs:byte" name="object_properties"/>
+                <xs:attribute type="xs:string" name="owning_group"/>
+                <xs:attribute type="xs:string" name="owning_user"/>
+                <xs:attribute type="xs:short" name="pid"/>
+                <xs:attribute type="xs:string" name="timestamp"/>
+                <xs:attribute type="xs:string" name="user_name"/>
+              </xs:extension>
+            </xs:simpleContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Role">
+          <xs:complexType>
+            <xs:simpleContent>
+              <xs:extension base="xs:string">
+                <xs:attribute type="xs:byte" name="acl_bits"/>
+                <xs:attribute type="xs:dateTime" name="creation_date"/>
+                <xs:attribute type="xs:string" name="elemId"/>
+                <xs:attribute type="xs:byte" name="island_id"/>
+                <xs:attribute type="xs:dateTime" name="last_mod_date"/>
+                <xs:attribute type="xs:string" name="last_mod_user"/>
+                <xs:attribute type="xs:byte" name="object_properties"/>
+                <xs:attribute type="xs:string" name="owning_group"/>
+                <xs:attribute type="xs:string" name="owning_user"/>
+                <xs:attribute type="xs:short" name="pid"/>
+                <xs:attribute type="xs:string" name="role_name"/>
+                <xs:attribute type="xs:string" name="timestamp"/>
+              </xs:extension>
+            </xs:simpleContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Group">
+          <xs:complexType>
+            <xs:simpleContent>
+              <xs:extension base="xs:string">
+                <xs:attribute type="xs:string" name="elemId"/>
+                <xs:attribute type="xs:string" name="full_name"/>
+                <xs:attribute type="xs:byte" name="island_id"/>
+                <xs:attribute type="xs:string" name="list_of_role"/>
+                <xs:attribute type="xs:string" name="name"/>
+                <xs:attribute type="xs:byte" name="object_properties"/>
+                <xs:attribute type="xs:string" name="parent"/>
+                <xs:attribute type="xs:short" name="pid"/>
+                <xs:attribute type="xs:byte" name="privilege"/>
+                <xs:attribute type="xs:string" name="timestamp"/>
+              </xs:extension>
+            </xs:simpleContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="User">
+          <xs:complexType>
+            <xs:simpleContent>
+              <xs:extension base="xs:string">
+                <xs:attribute type="xs:string" name="elemId" use="optional"/>
+                <xs:attribute type="xs:string" name="home_folder" use="optional"/>
+                <xs:attribute type="xs:byte" name="island_id" use="optional"/>
+                <xs:attribute type="xs:string" name="mailbox" use="optional"/>
+                <xs:attribute type="xs:string" name="newstuff_folder" use="optional"/>
+                <xs:attribute type="xs:byte" name="object_properties" use="optional"/>
+                <xs:attribute type="xs:string" name="os_username" use="optional"/>
+                <xs:attribute type="xs:string" name="person" use="optional"/>
+                <xs:attribute type="xs:short" name="pid" use="optional"/>
+                <xs:attribute type="xs:byte" name="status" use="optional"/>
+                <xs:attribute type="xs:string" name="timestamp" use="optional"/>
+                <xs:attribute type="xs:string" name="user_id" use="optional"/>
+                <xs:attribute type="xs:string" name="user_name" use="optional"/>
+                <xs:attribute type="xs:byte" name="acl_bits" use="optional"/>
+                <xs:attribute type="xs:dateTime" name="creation_date" use="optional"/>
+                <xs:attribute type="xs:dateTime" name="last_mod_date" use="optional"/>
+                <xs:attribute type="xs:string" name="last_mod_user" use="optional"/>
+                <xs:attribute type="xs:string" name="owning_group" use="optional"/>
+                <xs:attribute type="xs:string" name="owning_user" use="optional"/>
+              </xs:extension>
+            </xs:simpleContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="UnitOfMeasure" maxOccurs="unbounded" minOccurs="0">
+          <xs:complexType>
+            <xs:simpleContent>
+              <xs:extension base="xs:string">
+                <xs:attribute type="xs:string" name="elemId" use="optional"/>
+                <xs:attribute type="xs:byte" name="island_id" use="optional"/>
+                <xs:attribute type="xs:byte" name="object_properties" use="optional"/>
+                <xs:attribute type="xs:short" name="pid" use="optional"/>
+                <xs:attribute type="xs:string" name="symbol" use="optional"/>
+                <xs:attribute type="xs:string" name="timestamp" use="optional"/>
+                <xs:attribute type="xs:string" name="unit" use="optional"/>
+                <xs:attribute type="xs:string" name="home_folder" use="optional"/>
+                <xs:attribute type="xs:string" name="mailbox" use="optional"/>
+                <xs:attribute type="xs:string" name="newstuff_folder" use="optional"/>
+                <xs:attribute type="xs:string" name="os_username" use="optional"/>
+                <xs:attribute type="xs:string" name="person" use="optional"/>
+                <xs:attribute type="xs:byte" name="status" use="optional"/>
+                <xs:attribute type="xs:string" name="user_id" use="optional"/>
+                <xs:attribute type="xs:string" name="user_name" use="optional"/>
+              </xs:extension>
+            </xs:simpleContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ImanType">
+          <xs:complexType>
+            <xs:simpleContent>
+              <xs:extension base="xs:string">
+                <xs:attribute type="xs:string" name="elemId"/>
+                <xs:attribute type="xs:byte" name="island_id"/>
+                <xs:attribute type="xs:byte" name="object_properties"/>
+                <xs:attribute type="xs:short" name="pid"/>
+                <xs:attribute type="xs:string" name="timestamp"/>
+                <xs:attribute type="xs:string" name="type_class"/>
+                <xs:attribute type="xs:string" name="type_name"/>
+              </xs:extension>
+            </xs:simpleContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="POM_imc">
+          <xs:complexType>
+            <xs:simpleContent>
+              <xs:extension base="xs:string">
+                <xs:attribute type="xs:short" name="dbms"/>
+                <xs:attribute type="xs:string" name="elemId"/>
+                <xs:attribute type="xs:byte" name="island_id"/>
+                <xs:attribute type="xs:string" name="name"/>
+                <xs:attribute type="xs:byte" name="object_properties"/>
+                <xs:attribute type="xs:byte" name="pid"/>
+                <xs:attribute type="xs:int" name="site_id"/>
+                <xs:attribute type="xs:string" name="timestamp"/>
+              </xs:extension>
+            </xs:simpleContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="POM_stub" maxOccurs="unbounded" minOccurs="0">
+          <xs:complexType>
+            <xs:simpleContent>
+              <xs:extension base="xs:string">
+                <xs:attribute type="xs:string" name="definitive" use="optional"/>
+                <xs:attribute type="xs:string" name="elemId" use="optional"/>
+                <xs:attribute type="xs:string" name="object_class" use="optional"/>
+                <xs:attribute type="xs:string" name="object_id" use="optional"/>
+                <xs:attribute type="xs:string" name="object_type" use="optional"/>
+                <xs:attribute type="xs:string" name="object_uid" use="optional"/>
+              </xs:extension>
+            </xs:simpleContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="PSOccurrence" maxOccurs="unbounded" minOccurs="0">
+          <xs:complexType>
+            <xs:simpleContent>
+              <xs:extension base="xs:string">
+                <xs:attribute type="xs:string" name="child_item"/>
+                <xs:attribute type="xs:string" name="elemId"/>
+                <xs:attribute type="xs:byte" name="island_id"/>
+                <xs:attribute type="xs:dateTime" name="lsd"/>
+                <xs:attribute type="xs:byte" name="object_properties"/>
+                <xs:attribute type="xs:string" name="parent_bvr"/>
+                <xs:attribute type="xs:string" name="parent_uid"/>
+                <xs:attribute type="xs:short" name="pid"/>
+                <xs:attribute type="xs:string" name="puid"/>
+                <xs:attribute type="xs:byte" name="qty_value"/>
+                <xs:attribute type="xs:string" name="timestamp"/>
+              </xs:extension>
+            </xs:simpleContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="PSBOMViewRevision" maxOccurs="unbounded" minOccurs="0">
+          <xs:complexType>
+            <xs:simpleContent>
+              <xs:extension base="xs:string">
+                <xs:attribute type="xs:byte" name="acl_bits"/>
+                <xs:attribute type="xs:byte" name="active_seq"/>
+                <xs:attribute type="xs:string" name="archive_date"/>
+                <xs:attribute type="xs:string" name="archive_info"/>
+                <xs:attribute type="xs:string" name="backup_date"/>
+                <xs:attribute type="xs:string" name="bom_view"/>
+                <xs:attribute type="xs:dateTime" name="creation_date"/>
+                <xs:attribute type="xs:string" name="date_released"/>
+                <xs:attribute type="xs:string" name="ead_paragraph"/>
+                <xs:attribute type="xs:string" name="elemId"/>
+                <xs:attribute type="xs:string" name="fnd0InProcess"/>
+                <xs:attribute type="xs:string" name="fnd0RevisionId"/>
+                <xs:attribute type="xs:string" name="gov_classification"/>
+                <xs:attribute type="xs:string" name="ip_classification"/>
+                <xs:attribute type="xs:byte" name="is_precise"/>
+                <xs:attribute type="xs:byte" name="island_id"/>
+                <xs:attribute type="xs:dateTime" name="last_mod_date"/>
+                <xs:attribute type="xs:string" name="last_mod_user"/>
+                <xs:attribute type="xs:string" name="license_list"/>
+                <xs:attribute type="xs:dateTime" name="lsd"/>
+                <xs:attribute type="xs:string" name="object_application"/>
+                <xs:attribute type="xs:string" name="object_desc"/>
+                <xs:attribute type="xs:string" name="object_name"/>
+                <xs:attribute type="xs:byte" name="object_properties"/>
+                <xs:attribute type="xs:string" name="object_type"/>
+                <xs:attribute type="xs:string" name="owning_group"/>
+                <xs:attribute type="xs:string" name="owning_organization"/>
+                <xs:attribute type="xs:string" name="owning_project"/>
+                <xs:attribute type="xs:string" name="owning_user"/>
+                <xs:attribute type="xs:string" name="parent_uid"/>
+                <xs:attribute type="xs:short" name="pid"/>
+                <xs:attribute type="xs:string" name="process_stage_list"/>
+                <xs:attribute type="xs:string" name="project_list"/>
+                <xs:attribute type="xs:string" name="puid"/>
+                <xs:attribute type="xs:string" name="release_status_list"/>
+                <xs:attribute type="xs:byte" name="revision_limit"/>
+                <xs:attribute type="xs:byte" name="revision_number"/>
+                <xs:attribute type="xs:dateTime" name="struct_last_mod_date"/>
+                <xs:attribute type="xs:string" name="timestamp"/>
+                <xs:attribute type="xs:string" name="wso_thread"/>
+              </xs:extension>
+            </xs:simpleContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Imd0PkgDevIdfrRevision" maxOccurs="unbounded" minOccurs="0">
+          <xs:complexType>
+            <xs:simpleContent>
+              <xs:extension base="xs:string">
+                <xs:attribute type="xs:byte" name="acl_bits"/>
+                <xs:attribute type="xs:byte" name="active_seq"/>
+                <xs:attribute type="xs:string" name="archive_date"/>
+                <xs:attribute type="xs:string" name="archive_info"/>
+                <xs:attribute type="xs:string" name="backup_date"/>
+                <xs:attribute type="xs:dateTime" name="creation_date"/>
+                <xs:attribute type="xs:dateTime" name="date_released"/>
+                <xs:attribute type="xs:string" name="ead_paragraph"/>
+                <xs:attribute type="xs:string" name="elemId"/>
+                <xs:attribute type="xs:string" name="fnd0InProcess"/>
+                <xs:attribute type="xs:string" name="fnd0RevisionId"/>
+                <xs:attribute type="xs:string" name="fnd0reuseAssembly"/>
+                <xs:attribute type="xs:string" name="gov_classification"/>
+                <xs:attribute type="xs:string" name="ip_classification"/>
+                <xs:attribute type="xs:byte" name="island_id"/>
+                <xs:attribute type="xs:string" name="item_revision_id"/>
+                <xs:attribute type="xs:string" name="items_tag"/>
+                <xs:attribute type="xs:dateTime" name="last_mod_date"/>
+                <xs:attribute type="xs:string" name="last_mod_user"/>
+                <xs:attribute type="xs:string" name="license_list"/>
+                <xs:attribute type="xs:dateTime" name="lsd"/>
+                <xs:attribute type="xs:string" name="object_application"/>
+                <xs:attribute type="xs:string" name="object_desc"/>
+                <xs:attribute type="xs:string" name="object_name"/>
+                <xs:attribute type="xs:byte" name="object_properties"/>
+                <xs:attribute type="xs:string" name="object_type"/>
+                <xs:attribute type="xs:string" name="owning_group"/>
+                <xs:attribute type="xs:string" name="owning_organization"/>
+                <xs:attribute type="xs:string" name="owning_project"/>
+                <xs:attribute type="xs:string" name="owning_user"/>
+                <xs:attribute type="xs:string" name="parent_uid"/>
+                <xs:attribute type="xs:short" name="pid"/>
+                <xs:attribute type="xs:dateTime" name="pmg0EffectiveFrom"/>
+                <xs:attribute type="xs:dateTime" name="pmg0EffectiveTo"/>
+                <xs:attribute type="xs:string" name="process_stage_list"/>
+                <xs:attribute type="xs:string" name="project_list"/>
+                <xs:attribute type="xs:string" name="puid"/>
+                <xs:attribute type="xs:string" name="release_status_list"/>
+                <xs:attribute type="xs:byte" name="revision_limit"/>
+                <xs:attribute type="xs:byte" name="revision_number"/>
+                <xs:attribute type="xs:string" name="structure_revisions"/>
+                <xs:attribute type="xs:string" name="timestamp"/>
+                <xs:attribute type="xs:string" name="wso_thread"/>
+              </xs:extension>
+            </xs:simpleContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Imd0PkgDevIdfr" maxOccurs="unbounded" minOccurs="0">
+          <xs:complexType>
+            <xs:simpleContent>
+              <xs:extension base="xs:string">
+                <xs:attribute type="xs:byte" name="acl_bits"/>
+                <xs:attribute type="xs:byte" name="active_seq"/>
+                <xs:attribute type="xs:string" name="archive_date"/>
+                <xs:attribute type="xs:string" name="archive_info"/>
+                <xs:attribute type="xs:string" name="backup_date"/>
+                <xs:attribute type="xs:string" name="bom_view_tags"/>
+                <xs:attribute type="xs:string" name="configuration_object_tag"/>
+                <xs:attribute type="xs:dateTime" name="creation_date"/>
+                <xs:attribute type="xs:string" name="date_released"/>
+                <xs:attribute type="xs:string" name="ead_paragraph"/>
+                <xs:attribute type="xs:string" name="elemId"/>
+                <xs:attribute type="xs:string" name="fnd0InProcess"/>
+                <xs:attribute type="xs:string" name="fnd0OriginalLocationCode"/>
+                <xs:attribute type="xs:string" name="fnd0RevisionId"/>
+                <xs:attribute type="xs:string" name="fnd0is_monolithic"/>
+                <xs:attribute type="xs:string" name="global_alt_list"/>
+                <xs:attribute type="xs:string" name="gov_classification"/>
+                <xs:attribute type="xs:string" name="has_variant_module"/>
+                <xs:attribute type="xs:string" name="imd0IssuingAgency"/>
+                <xs:attribute type="xs:string" name="ip_classification"/>
+                <xs:attribute type="xs:string" name="is_configuration_item"/>
+                <xs:attribute type="xs:string" name="is_vi"/>
+                <xs:attribute type="xs:byte" name="island_id"/>
+                <xs:attribute type="xs:short" name="item_id"/>
+                <xs:attribute type="xs:dateTime" name="last_mod_date"/>
+                <xs:attribute type="xs:string" name="last_mod_user"/>
+                <xs:attribute type="xs:string" name="license_list"/>
+                <xs:attribute type="xs:dateTime" name="lsd"/>
+                <xs:attribute type="xs:string" name="object_application"/>
+                <xs:attribute type="xs:string" name="object_desc"/>
+                <xs:attribute type="xs:string" name="object_name"/>
+                <xs:attribute type="xs:byte" name="object_properties"/>
+                <xs:attribute type="xs:string" name="object_type"/>
+                <xs:attribute type="xs:string" name="owning_group"/>
+                <xs:attribute type="xs:string" name="owning_organization"/>
+                <xs:attribute type="xs:string" name="owning_project"/>
+                <xs:attribute type="xs:string" name="owning_user"/>
+                <xs:attribute type="xs:string" name="parent_uid"/>
+                <xs:attribute type="xs:short" name="pid"/>
+                <xs:attribute type="xs:string" name="pmg0BaseSKU"/>
+                <xs:attribute type="xs:long" name="pmg0GTIN"/>
+                <xs:attribute type="xs:string" name="pmg0GTINMgmtRule"/>
+                <xs:attribute type="xs:string" name="pmg0Type"/>
+                <xs:attribute type="xs:string" name="preferred_global_alt"/>
+                <xs:attribute type="xs:string" name="process_stage_list"/>
+                <xs:attribute type="xs:string" name="project_list"/>
+                <xs:attribute type="xs:string" name="puid"/>
+                <xs:attribute type="xs:string" name="release_status_list"/>
+                <xs:attribute type="xs:byte" name="revision_limit"/>
+                <xs:attribute type="xs:byte" name="revision_number"/>
+                <xs:attribute type="xs:string" name="timestamp"/>
+                <xs:attribute type="xs:string" name="uom_tag"/>
+                <xs:attribute type="xs:string" name="wso_thread"/>
+              </xs:extension>
+            </xs:simpleContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="CompanyContact" maxOccurs="unbounded" minOccurs="0">
+          <xs:complexType>
+            <xs:simpleContent>
+              <xs:extension base="xs:string">
+                <xs:attribute type="xs:byte" name="acl_bits"/>
+                <xs:attribute type="xs:byte" name="active_seq"/>
+                <xs:attribute type="xs:string" name="archive_date"/>
+                <xs:attribute type="xs:string" name="archive_info"/>
+                <xs:attribute type="xs:string" name="backup_date"/>
+                <xs:attribute type="xs:dateTime" name="creation_date"/>
+                <xs:attribute type="xs:string" name="date_released"/>
+                <xs:attribute type="xs:string" name="ead_paragraph"/>
+                <xs:attribute type="xs:string" name="elemId"/>
+                <xs:attribute type="xs:string" name="email_address"/>
+                <xs:attribute type="xs:string" name="first_name"/>
+                <xs:attribute type="xs:string" name="fnd0InProcess"/>
+                <xs:attribute type="xs:string" name="fnd0RevisionId"/>
+                <xs:attribute type="xs:string" name="gov_classification"/>
+                <xs:attribute type="xs:string" name="ip_classification"/>
+                <xs:attribute type="xs:byte" name="island_id"/>
+                <xs:attribute type="xs:dateTime" name="last_mod_date"/>
+                <xs:attribute type="xs:string" name="last_mod_user"/>
+                <xs:attribute type="xs:string" name="last_name"/>
+                <xs:attribute type="xs:string" name="license_list"/>
+                <xs:attribute type="xs:dateTime" name="lsd"/>
+                <xs:attribute type="xs:string" name="object_application"/>
+                <xs:attribute type="xs:string" name="object_desc"/>
+                <xs:attribute type="xs:string" name="object_name"/>
+                <xs:attribute type="xs:byte" name="object_properties"/>
+                <xs:attribute type="xs:string" name="object_type"/>
+                <xs:attribute type="xs:string" name="owning_group"/>
+                <xs:attribute type="xs:string" name="owning_organization"/>
+                <xs:attribute type="xs:string" name="owning_project"/>
+                <xs:attribute type="xs:string" name="owning_user"/>
+                <xs:attribute type="xs:string" name="parent_uid"/>
+                <xs:attribute type="xs:string" name="phone_business"/>
+                <xs:attribute type="xs:string" name="phone_mobile"/>
+                <xs:attribute type="xs:short" name="pid"/>
+                <xs:attribute type="xs:string" name="process_stage_list"/>
+                <xs:attribute type="xs:string" name="project_list"/>
+                <xs:attribute type="xs:string" name="puid"/>
+                <xs:attribute type="xs:string" name="release_status_list"/>
+                <xs:attribute type="xs:byte" name="revision_limit"/>
+                <xs:attribute type="xs:byte" name="revision_number"/>
+                <xs:attribute type="xs:string" name="timestamp"/>
+                <xs:attribute type="xs:string" name="wso_thread"/>
+              </xs:extension>
+            </xs:simpleContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Imd0MedDevIdfr">
+          <xs:complexType>
+            <xs:simpleContent>
+              <xs:extension base="xs:string">
+                <xs:attribute type="xs:byte" name="acl_bits"/>
+                <xs:attribute type="xs:byte" name="active_seq"/>
+                <xs:attribute type="xs:string" name="archive_date"/>
+                <xs:attribute type="xs:string" name="archive_info"/>
+                <xs:attribute type="xs:string" name="backup_date"/>
+                <xs:attribute type="xs:string" name="configuration_object_tag"/>
+                <xs:attribute type="xs:dateTime" name="creation_date"/>
+                <xs:attribute type="xs:string" name="date_released"/>
+                <xs:attribute type="xs:string" name="ead_paragraph"/>
+                <xs:attribute type="xs:string" name="elemId"/>
+                <xs:attribute type="xs:string" name="fnd0InProcess"/>
+                <xs:attribute type="xs:string" name="fnd0OriginalLocationCode"/>
+                <xs:attribute type="xs:string" name="fnd0RevisionId"/>
+                <xs:attribute type="xs:string" name="fnd0is_monolithic"/>
+                <xs:attribute type="xs:string" name="global_alt_list"/>
+                <xs:attribute type="xs:string" name="gov_classification"/>
+                <xs:attribute type="xs:string" name="has_variant_module"/>
+                <xs:attribute type="xs:string" name="imd0IssuingAgency"/>
+                <xs:attribute type="xs:string" name="imd0RootPublicKey"/>
+                <xs:attribute type="xs:string" name="ip_classification"/>
+                <xs:attribute type="xs:string" name="is_configuration_item"/>
+                <xs:attribute type="xs:string" name="is_vi"/>
+                <xs:attribute type="xs:byte" name="island_id"/>
+                <xs:attribute type="xs:int" name="item_id"/>
+                <xs:attribute type="xs:dateTime" name="last_mod_date"/>
+                <xs:attribute type="xs:string" name="last_mod_user"/>
+                <xs:attribute type="xs:string" name="license_list"/>
+                <xs:attribute type="xs:dateTime" name="lsd"/>
+                <xs:attribute type="xs:string" name="object_application"/>
+                <xs:attribute type="xs:string" name="object_desc"/>
+                <xs:attribute type="xs:string" name="object_name"/>
+                <xs:attribute type="xs:byte" name="object_properties"/>
+                <xs:attribute type="xs:string" name="object_type"/>
+                <xs:attribute type="xs:string" name="owning_group"/>
+                <xs:attribute type="xs:string" name="owning_organization"/>
+                <xs:attribute type="xs:string" name="owning_project"/>
+                <xs:attribute type="xs:string" name="owning_user"/>
+                <xs:attribute type="xs:string" name="parent_uid"/>
+                <xs:attribute type="xs:short" name="pid"/>
+                <xs:attribute type="xs:string" name="pmg0BaseSKU"/>
+                <xs:attribute type="xs:string" name="pmg0GTIN"/>
+                <xs:attribute type="xs:string" name="pmg0GTINMgmtRule"/>
+                <xs:attribute type="xs:string" name="preferred_global_alt"/>
+                <xs:attribute type="xs:string" name="process_stage_list"/>
+                <xs:attribute type="xs:string" name="project_list"/>
+                <xs:attribute type="xs:string" name="puid"/>
+                <xs:attribute type="xs:string" name="release_status_list"/>
+                <xs:attribute type="xs:byte" name="revision_limit"/>
+                <xs:attribute type="xs:byte" name="revision_number"/>
+                <xs:attribute type="xs:string" name="timestamp"/>
+                <xs:attribute type="xs:string" name="uom_tag"/>
+                <xs:attribute type="xs:string" name="wso_thread"/>
+              </xs:extension>
+            </xs:simpleContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Imd0FDAPreMktSubTableRow" maxOccurs="unbounded" minOccurs="0">
+          <xs:complexType>
+            <xs:simpleContent>
+              <xs:extension base="xs:string">
+                <xs:attribute type="xs:string" name="black_box_data"/>
+                <xs:attribute type="xs:string" name="elemId"/>
+                <xs:attribute type="xs:string" name="fnd0OwningObject"/>
+                <xs:attribute type="xs:string" name="fnd0OwningPropName"/>
+                <xs:attribute type="xs:byte" name="fnd0RowIndex"/>
+                <xs:attribute type="xs:string" name="imd0FDAPreMktSubmissionNum"/>
+                <xs:attribute type="xs:byte" name="imd0SupplementNumber"/>
+                <xs:attribute type="xs:string" name="isRevisable"/>
+                <xs:attribute type="xs:byte" name="island_id"/>
+                <xs:attribute type="xs:dateTime" name="lsd"/>
+                <xs:attribute type="xs:byte" name="object_properties"/>
+                <xs:attribute type="xs:string" name="parent_uid"/>
+                <xs:attribute type="xs:short" name="pid"/>
+                <xs:attribute type="xs:string" name="puid"/>
+                <xs:attribute type="xs:string" name="rev_uid"/>
+                <xs:attribute type="xs:string" name="timestamp"/>
+              </xs:extension>
+            </xs:simpleContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Imd0ProductCodeTableRow" maxOccurs="unbounded" minOccurs="0">
+          <xs:complexType>
+            <xs:simpleContent>
+              <xs:extension base="xs:string">
+                <xs:attribute type="xs:string" name="black_box_data"/>
+                <xs:attribute type="xs:string" name="elemId"/>
+                <xs:attribute type="xs:string" name="fnd0OwningObject"/>
+                <xs:attribute type="xs:string" name="fnd0OwningPropName"/>
+                <xs:attribute type="xs:byte" name="fnd0RowIndex"/>
+                <xs:attribute type="xs:string" name="imd0ProductCode"/>
+                <xs:attribute type="xs:string" name="imd0ProductCodeName"/>
+                <xs:attribute type="xs:string" name="isRevisable"/>
+                <xs:attribute type="xs:byte" name="island_id"/>
+                <xs:attribute type="xs:dateTime" name="lsd"/>
+                <xs:attribute type="xs:byte" name="object_properties"/>
+                <xs:attribute type="xs:string" name="parent_uid"/>
+                <xs:attribute type="xs:short" name="pid"/>
+                <xs:attribute type="xs:string" name="puid"/>
+                <xs:attribute type="xs:string" name="rev_uid"/>
+                <xs:attribute type="xs:string" name="timestamp"/>
+              </xs:extension>
+            </xs:simpleContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Imd0SecDITableRow" maxOccurs="unbounded" minOccurs="0">
+          <xs:complexType>
+            <xs:simpleContent>
+              <xs:extension base="xs:string">
+                <xs:attribute type="xs:string" name="black_box_data"/>
+                <xs:attribute type="xs:string" name="elemId"/>
+                <xs:attribute type="xs:string" name="fnd0OwningObject"/>
+                <xs:attribute type="xs:string" name="fnd0OwningPropName"/>
+                <xs:attribute type="xs:byte" name="fnd0RowIndex"/>
+                <xs:attribute type="xs:string" name="imd0SecDIIssuingAgency"/>
+                <xs:attribute type="xs:string" name="imd0SecDINum"/>
+                <xs:attribute type="xs:string" name="isRevisable"/>
+                <xs:attribute type="xs:byte" name="island_id"/>
+                <xs:attribute type="xs:dateTime" name="lsd"/>
+                <xs:attribute type="xs:byte" name="object_properties"/>
+                <xs:attribute type="xs:string" name="parent_uid"/>
+                <xs:attribute type="xs:short" name="pid"/>
+                <xs:attribute type="xs:string" name="puid"/>
+                <xs:attribute type="xs:string" name="rev_uid"/>
+                <xs:attribute type="xs:string" name="timestamp"/>
+              </xs:extension>
+            </xs:simpleContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Imd0GMDNTableRow">
+          <xs:complexType>
+            <xs:simpleContent>
+              <xs:extension base="xs:string">
+                <xs:attribute type="xs:string" name="black_box_data"/>
+                <xs:attribute type="xs:string" name="elemId"/>
+                <xs:attribute type="xs:string" name="fnd0OwningObject"/>
+                <xs:attribute type="xs:string" name="fnd0OwningPropName"/>
+                <xs:attribute type="xs:byte" name="fnd0RowIndex"/>
+                <xs:attribute type="xs:int" name="imd0GMDNCode"/>
+                <xs:attribute type="xs:string" name="imd0GMDNDefinition"/>
+                <xs:attribute type="xs:string" name="imd0GMDNName"/>
+                <xs:attribute type="xs:string" name="isRevisable"/>
+                <xs:attribute type="xs:byte" name="island_id"/>
+                <xs:attribute type="xs:dateTime" name="lsd"/>
+                <xs:attribute type="xs:byte" name="object_properties"/>
+                <xs:attribute type="xs:string" name="parent_uid"/>
+                <xs:attribute type="xs:short" name="pid"/>
+                <xs:attribute type="xs:string" name="puid"/>
+                <xs:attribute type="xs:string" name="rev_uid"/>
+                <xs:attribute type="xs:string" name="timestamp"/>
+              </xs:extension>
+            </xs:simpleContent>
+          </xs:complexType>
+        </xs:element>
+		<xs:element name="Pmg0ItemSKUDimensionRel" maxOccurs="unbounded" minOccurs="0">
+          <xs:complexType>
+            <xs:simpleContent>
+              <xs:extension base="xs:string">
+                <xs:attribute type="xs:string" name="elemId" use="optional"/>
+                <xs:attribute type="xs:dateTime" name="fnd0CopyStableDate" use="optional"/>
+                <xs:attribute type="xs:string" name="fnd0CopyStableId" use="optional"/>
+                <xs:attribute type="xs:string" name="fnd0RequiresDigitalSign" use="optional"/>
+                <xs:attribute type="xs:string" name="imd0HighValue" use="optional"/>
+                <xs:attribute type="xs:string" name="imd0LowValue" use="optional"/>
+                <xs:attribute type="xs:string" name="imd0SpecialText" use="optional"/>
+                <xs:attribute type="xs:byte" name="island_id" use="optional"/>
+                <xs:attribute type="xs:dateTime" name="lsd" use="optional"/>
+                <xs:attribute type="xs:byte" name="object_properties" use="optional"/>
+                <xs:attribute type="xs:string" name="parent_uid" use="optional"/>
+                <xs:attribute type="xs:short" name="pid" use="optional"/>
+                <xs:attribute type="xs:string" name="pmg0DimValue" use="optional"/>
+                <xs:attribute type="xs:string" name="primary_object" use="optional"/>
+                <xs:attribute type="xs:string" name="puid" use="optional"/>
+                <xs:attribute type="xs:string" name="relation_type" use="optional"/>
+                <xs:attribute type="xs:string" name="secondary_object" use="optional"/>
+                <xs:attribute type="xs:string" name="timestamp" use="optional"/>
+                <xs:attribute type="xs:string" name="user_data" use="optional"/>
+              </xs:extension>
+            </xs:simpleContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Imd0MedDevIdfrRevision">
+          <xs:complexType>
+            <xs:simpleContent>
+              <xs:extension base="xs:string">
+                <xs:attribute type="xs:byte" name="acl_bits"/>
+                <xs:attribute type="xs:byte" name="active_seq"/>
+                <xs:attribute type="xs:string" name="archive_date"/>
+                <xs:attribute type="xs:string" name="archive_info"/>
+                <xs:attribute type="xs:string" name="backup_date"/>
+                <xs:attribute type="xs:dateTime" name="creation_date"/>
+                <xs:attribute type="xs:dateTime" name="date_released"/>
+                <xs:attribute type="xs:string" name="ead_paragraph"/>
+                <xs:attribute type="xs:string" name="elemId"/>
+                <xs:attribute type="xs:string" name="fnd0InProcess"/>
+                <xs:attribute type="xs:string" name="fnd0RevisionId"/>
+                <xs:attribute type="xs:string" name="fnd0reuseAssembly"/>
+                <xs:attribute type="xs:string" name="gov_classification"/>
+                <xs:attribute type="xs:string" name="ip_classification"/>
+                <xs:attribute type="xs:byte" name="island_id"/>
+                <xs:attribute type="xs:string" name="item_revision_id"/>
+                <xs:attribute type="xs:string" name="items_tag"/>
+                <xs:attribute type="xs:dateTime" name="last_mod_date"/>
+                <xs:attribute type="xs:string" name="last_mod_user"/>
+                <xs:attribute type="xs:string" name="license_list"/>
+                <xs:attribute type="xs:dateTime" name="lsd"/>
+                <xs:attribute type="xs:string" name="object_application"/>
+                <xs:attribute type="xs:string" name="object_desc"/>
+                <xs:attribute type="xs:string" name="object_name"/>
+                <xs:attribute type="xs:byte" name="object_properties"/>
+                <xs:attribute type="xs:string" name="object_type"/>
+                <xs:attribute type="xs:string" name="owning_group"/>
+                <xs:attribute type="xs:string" name="owning_organization"/>
+                <xs:attribute type="xs:string" name="owning_project"/>
+                <xs:attribute type="xs:string" name="owning_user"/>
+                <xs:attribute type="xs:string" name="parent_uid"/>
+                <xs:attribute type="xs:short" name="pid"/>
+                <xs:attribute type="xs:dateTime" name="pmg0EffectiveFrom"/>
+                <xs:attribute type="xs:dateTime" name="pmg0EffectiveTo"/>
+                <xs:attribute type="xs:string" name="process_stage_list"/>
+                <xs:attribute type="xs:string" name="project_list"/>
+                <xs:attribute type="xs:string" name="puid"/>
+                <xs:attribute type="xs:string" name="release_status_list"/>
+                <xs:attribute type="xs:byte" name="revision_limit"/>
+                <xs:attribute type="xs:byte" name="revision_number"/>
+                <xs:attribute type="xs:string" name="timestamp"/>
+                <xs:attribute type="xs:string" name="wso_thread"/>
+              </xs:extension>
+            </xs:simpleContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Imd0StorageAndHandling" maxOccurs="unbounded" minOccurs="0">
+          <xs:complexType>
+            <xs:simpleContent>
+              <xs:extension base="xs:string">
+                <xs:attribute type="xs:byte" name="acl_bits"/>
+                <xs:attribute type="xs:byte" name="active_seq"/>
+                <xs:attribute type="xs:string" name="archive_date"/>
+                <xs:attribute type="xs:string" name="archive_info"/>
+                <xs:attribute type="xs:string" name="backup_date"/>
+                <xs:attribute type="xs:dateTime" name="creation_date"/>
+                <xs:attribute type="xs:string" name="date_released"/>
+                <xs:attribute type="xs:string" name="ead_paragraph"/>
+                <xs:attribute type="xs:string" name="elemId"/>
+                <xs:attribute type="xs:string" name="fnd0InProcess"/>
+                <xs:attribute type="xs:string" name="fnd0RevisionId"/>
+                <xs:attribute type="xs:string" name="gov_classification"/>
+                <xs:attribute type="xs:string" name="ip_classification"/>
+                <xs:attribute type="xs:byte" name="island_id"/>
+                <xs:attribute type="xs:dateTime" name="last_mod_date"/>
+                <xs:attribute type="xs:string" name="last_mod_user"/>
+                <xs:attribute type="xs:string" name="license_list"/>
+                <xs:attribute type="xs:dateTime" name="lsd"/>
+                <xs:attribute type="xs:string" name="object_application"/>
+                <xs:attribute type="xs:string" name="object_desc"/>
+                <xs:attribute type="xs:string" name="object_name"/>
+                <xs:attribute type="xs:byte" name="object_properties"/>
+                <xs:attribute type="xs:string" name="object_type"/>
+                <xs:attribute type="xs:string" name="owning_group"/>
+                <xs:attribute type="xs:string" name="owning_organization"/>
+                <xs:attribute type="xs:string" name="owning_project"/>
+                <xs:attribute type="xs:string" name="owning_user"/>
+                <xs:attribute type="xs:string" name="parent_uid"/>
+                <xs:attribute type="xs:short" name="pid"/>
+                <xs:attribute type="xs:string" name="pmg0UnitOfMeasure"/>
+                <xs:attribute type="xs:string" name="process_stage_list"/>
+                <xs:attribute type="xs:string" name="project_list"/>
+                <xs:attribute type="xs:string" name="puid"/>
+                <xs:attribute type="xs:string" name="release_status_list"/>
+                <xs:attribute type="xs:byte" name="revision_limit"/>
+                <xs:attribute type="xs:byte" name="revision_number"/>
+                <xs:attribute type="xs:string" name="timestamp"/>
+                <xs:attribute type="xs:string" name="wso_thread"/>
+              </xs:extension>
+            </xs:simpleContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Imd0DeviceSize" maxOccurs="unbounded" minOccurs="0">
+          <xs:complexType>
+            <xs:simpleContent>
+              <xs:extension base="xs:string">
+                <xs:attribute type="xs:byte" name="acl_bits" use="optional"/>
+                <xs:attribute type="xs:byte" name="active_seq" use="optional"/>
+                <xs:attribute type="xs:string" name="archive_date" use="optional"/>
+                <xs:attribute type="xs:string" name="archive_info" use="optional"/>
+                <xs:attribute type="xs:string" name="backup_date" use="optional"/>
+                <xs:attribute type="xs:dateTime" name="creation_date" use="optional"/>
+                <xs:attribute type="xs:string" name="date_released" use="optional"/>
+                <xs:attribute type="xs:string" name="ead_paragraph" use="optional"/>
+                <xs:attribute type="xs:string" name="elemId" use="optional"/>
+                <xs:attribute type="xs:string" name="fnd0InProcess" use="optional"/>
+                <xs:attribute type="xs:string" name="fnd0RevisionId" use="optional"/>
+                <xs:attribute type="xs:string" name="gov_classification" use="optional"/>
+                <xs:attribute type="xs:string" name="ip_classification" use="optional"/>
+                <xs:attribute type="xs:byte" name="island_id" use="optional"/>
+                <xs:attribute type="xs:dateTime" name="last_mod_date" use="optional"/>
+                <xs:attribute type="xs:string" name="last_mod_user" use="optional"/>
+                <xs:attribute type="xs:string" name="license_list" use="optional"/>
+                <xs:attribute type="xs:dateTime" name="lsd" use="optional"/>
+                <xs:attribute type="xs:string" name="object_application" use="optional"/>
+                <xs:attribute type="xs:string" name="object_desc" use="optional"/>
+                <xs:attribute type="xs:string" name="object_name" use="optional"/>
+                <xs:attribute type="xs:byte" name="object_properties" use="optional"/>
+                <xs:attribute type="xs:string" name="object_type" use="optional"/>
+                <xs:attribute type="xs:string" name="owning_group" use="optional"/>
+                <xs:attribute type="xs:string" name="owning_organization" use="optional"/>
+                <xs:attribute type="xs:string" name="owning_project" use="optional"/>
+                <xs:attribute type="xs:string" name="owning_user" use="optional"/>
+                <xs:attribute type="xs:string" name="parent_uid" use="optional"/>
+                <xs:attribute type="xs:short" name="pid" use="optional"/>
+                <xs:attribute type="xs:string" name="pmg0UnitOfMeasure" use="optional"/>
+                <xs:attribute type="xs:string" name="process_stage_list" use="optional"/>
+                <xs:attribute type="xs:string" name="project_list" use="optional"/>
+                <xs:attribute type="xs:string" name="puid" use="optional"/>
+                <xs:attribute type="xs:string" name="release_status_list" use="optional"/>
+                <xs:attribute type="xs:byte" name="revision_limit" use="optional"/>
+                <xs:attribute type="xs:byte" name="revision_number" use="optional"/>
+                <xs:attribute type="xs:string" name="timestamp" use="optional"/>
+                <xs:attribute type="xs:string" name="wso_thread" use="optional"/>
+              </xs:extension>
+            </xs:simpleContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Imd0FDADIRecord">
+          <xs:complexType>
+            <xs:simpleContent>
+              <xs:extension base="xs:string">
+                <xs:attribute type="xs:byte" name="acl_bits"/>
+                <xs:attribute type="xs:byte" name="active_seq"/>
+                <xs:attribute type="xs:string" name="archive_date"/>
+                <xs:attribute type="xs:string" name="archive_info"/>
+                <xs:attribute type="xs:string" name="backup_date"/>
+                <xs:attribute type="xs:dateTime" name="creation_date"/>
+                <xs:attribute type="xs:dateTime" name="date_released"/>
+                <xs:attribute type="xs:string" name="ead_paragraph"/>
+                <xs:attribute type="xs:string" name="elemId"/>
+                <xs:attribute type="xs:string" name="fnd0InProcess"/>
+                <xs:attribute type="xs:string" name="fnd0RevisionId"/>
+                <xs:attribute type="xs:string" name="gov_classification"/>
+                <xs:attribute type="xs:string" name="imd0BatchNumber"/>
+                <xs:attribute type="xs:string" name="imd0BrandName"/>
+                <xs:attribute type="xs:string" name="imd0CatalogNumber"/>
+                <xs:attribute type="xs:string" name="imd0CombinationProduct"/>
+                <xs:attribute type="xs:string" name="imd0CompanyName"/>
+                <xs:attribute type="xs:string" name="imd0CompanyPhyAddress"/>
+                <xs:attribute type="xs:string" name="imd0CriticalWarnings"/>
+                <xs:attribute type="xs:string" name="imd0CustomerContact"/>
+                <xs:attribute type="xs:dateTime" name="imd0DIRecordPublishDate"/>
+                <xs:attribute type="xs:string" name="imd0DMDIDiffPDI"/>
+                <xs:attribute type="xs:string" name="imd0DMDIIssuingAgency"/>
+                <xs:attribute type="xs:string" name="imd0DMDINumber"/>
+                <xs:attribute type="xs:int" name="imd0DUNSNumber"/>
+                <xs:attribute type="xs:string" name="imd0DevContainsLatexLabel"/>
+                <xs:attribute type="xs:string" name="imd0DevExemptFromPreMktSub"/>
+                <xs:attribute type="xs:string" name="imd0DevLabelNotNatLatex"/>
+                <xs:attribute type="xs:string" name="imd0DevPkgdAsSterile"/>
+                <xs:attribute type="xs:string" name="imd0DevSubToDMExempt" default="N"/>
+                <xs:attribute type="xs:byte" name="imd0DeviceCount"/>
+                <xs:attribute type="xs:string" name="imd0DeviceDesc"/>
+                <xs:attribute type="xs:string" name="imd0DonationIdNum"/>
+                <xs:attribute type="xs:string" name="imd0ExpirationDate"/>
+                <xs:attribute type="xs:int" name="imd0FDAListingNumber"/>
+                <xs:attribute type="xs:string" name="imd0HumanCTCTBP"/>
+                <xs:attribute type="xs:string" name="imd0Kit"/>
+                <xs:attribute type="xs:string" name="imd0MRISafety"/>
+                <xs:attribute type="xs:string" name="imd0MaxNumOfReuses"/>
+                <xs:attribute type="xs:string" name="imd0MfgDate"/>
+                <xs:attribute type="xs:string" name="imd0OverTheCounter"/>
+                <xs:attribute type="xs:string" name="imd0PrescriptionUse"/>
+                <xs:attribute type="xs:string" name="imd0PreviousDI"/>
+                <xs:attribute type="xs:string" name="imd0ReqSterlznPriorToUse"/>
+                <xs:attribute type="xs:string" name="imd0SerialNumber"/>
+                <xs:attribute type="xs:string" name="imd0SingleUse"/>
+                <xs:attribute type="xs:string" name="imd0SterilizationMethod"/>
+                <xs:attribute type="xs:string" name="imd0URLForAdditionalInfo"/>
+                <xs:attribute type="xs:string" name="imd0UnitOfUseDINum"/>
+                <xs:attribute type="xs:string" name="imd0Version"/>
+                <xs:attribute type="xs:string" name="ip_classification"/>
+                <xs:attribute type="xs:byte" name="island_id"/>
+                <xs:attribute type="xs:dateTime" name="last_mod_date"/>
+                <xs:attribute type="xs:string" name="last_mod_user"/>
+                <xs:attribute type="xs:string" name="license_list"/>
+                <xs:attribute type="xs:dateTime" name="lsd"/>
+                <xs:attribute type="xs:string" name="object_application"/>
+                <xs:attribute type="xs:string" name="object_desc"/>
+                <xs:attribute type="xs:string" name="object_name"/>
+                <xs:attribute type="xs:byte" name="object_properties"/>
+                <xs:attribute type="xs:string" name="object_type"/>
+                <xs:attribute type="xs:string" name="owning_group"/>
+                <xs:attribute type="xs:string" name="owning_organization"/>
+                <xs:attribute type="xs:string" name="owning_project"/>
+                <xs:attribute type="xs:string" name="owning_user"/>
+                <xs:attribute type="xs:string" name="parent_uid"/>
+                <xs:attribute type="xs:short" name="pid"/>
+                <xs:attribute type="xs:string" name="process_stage_list"/>
+                <xs:attribute type="xs:string" name="project_list"/>
+                <xs:attribute type="xs:string" name="puid"/>
+                <xs:attribute type="xs:string" name="release_status_list"/>
+                <xs:attribute type="xs:byte" name="revision_limit"/>
+                <xs:attribute type="xs:byte" name="revision_number"/>
+                <xs:attribute type="xs:string" name="timestamp"/>
+                <xs:attribute type="xs:string" name="wso_thread"/>
+              </xs:extension>
+            </xs:simpleContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Imd0DIRecordRel">
+          <xs:complexType>
+            <xs:simpleContent>
+              <xs:extension base="xs:string">
+                <xs:attribute type="xs:string" name="elemId"/>
+                <xs:attribute type="xs:dateTime" name="fnd0CopyStableDate"/>
+                <xs:attribute type="xs:string" name="fnd0CopyStableId"/>
+                <xs:attribute type="xs:string" name="fnd0RequiresDigitalSign"/>
+                <xs:attribute type="xs:byte" name="island_id"/>
+                <xs:attribute type="xs:dateTime" name="lsd"/>
+                <xs:attribute type="xs:byte" name="object_properties"/>
+                <xs:attribute type="xs:string" name="parent_uid"/>
+                <xs:attribute type="xs:short" name="pid"/>
+                <xs:attribute type="xs:string" name="primary_object"/>
+                <xs:attribute type="xs:string" name="puid"/>
+                <xs:attribute type="xs:string" name="relation_type"/>
+                <xs:attribute type="xs:string" name="secondary_object"/>
+                <xs:attribute type="xs:string" name="timestamp"/>
+                <xs:attribute type="xs:string" name="user_data"/>
+              </xs:extension>
+            </xs:simpleContent>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+      <xs:attribute type="xs:string" name="format"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

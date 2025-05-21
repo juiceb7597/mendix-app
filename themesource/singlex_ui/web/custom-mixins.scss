@@ -1,0 +1,61 @@
+@mixin btn-interactive-default-active {
+	background-color: $color-primary-dark;
+	color: #fff;
+	& * {
+		color: #fff;
+	}
+}
+@mixin btn-interactive-default {
+	a,
+	button {
+		&:hover {
+			background-color: var(--topbar-bg-hover);
+		}
+		&.active {
+			@include btn-interactive-default-active();
+		}
+	}
+	&.active {
+		a,
+		button {
+			@include btn-interactive-default-active();
+		}
+	}
+}
+@mixin btn-ico-default($type: default) {
+	width: var(--topbar-menu-height);
+	height: var(--topbar-menu-height);
+	@media (max-width: $screen-sm) {
+		width: calc(var(--topbar-menu-height) - 6px);
+		height: calc(var(--topbar-menu-height) - 6px);
+	}
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 50%;
+	background-color: var(--topbar-bg-hover);
+	&:hover {
+		background-color: var(--topbar-bg-hover2);
+	}
+	@if ($type == 'lined') {
+		border: 1px solid $main-border-color;
+		background-color: transparent;
+		&:hover {
+			background-color: var(--topbar-bg-hover);
+		}
+	}
+	@if ($type == 'lighter') {
+		background-color: var(--topbar-bg-hover2);
+		&:hover {
+			background-color: var(--topbar-bg-hover);
+		}
+	}
+	@if ($type == 'normal') {
+		width: unset;
+		height: unset;
+		display: unset;
+		border-radius: unset;
+		background-color: unset;
+		color: $main-font-color;
+	}
+}

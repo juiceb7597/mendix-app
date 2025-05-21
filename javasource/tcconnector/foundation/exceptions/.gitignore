@@ -1,0 +1,12 @@
+/AuthException.class
+/BaseServiceException$Severity.class
+/BaseServiceException.class
+/InternalServerException$ISECause.class
+/InternalServerException.class
+/InvalidCredentialsException.class
+/InvalidInputException.class
+/InvalidUserException.class
+/NotLoadedExcpetion.class
+/PropertyTypeExcpetion.class
+/ServiceException$SECause.class
+/ServiceException.class

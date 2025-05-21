@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="submission">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="environment">
+					<xs:complexType>
+						<xs:sequence>
+						<xs:element type="xs:string" name="detail"/>
+						</xs:sequence>
+						<xs:attribute type="xs:string" name="value"/>
+						</xs:complexType>
+				</xs:element>
+				<xs:element name="coreId" type="xs:string"/>
+				<xs:element name="batchId" type="xs:string"/>
+				<xs:element name="dateEntered" type="xs:string"/>
+				<xs:element name="numReportFailed" type="xs:integer"/>
+				<xs:element name="numReportPassed" type="xs:integer"/>
+				<xs:element name="submissionType" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element name="report" minOccurs="0" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="status" type="xs:string"/>
+						</xs:sequence>
+						<xs:attribute name="id" type="xs:string"/>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="failure" minOccurs="0" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="reportId" type="xs:string"/>
+							<xs:element name="detail" minOccurs="0" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="section" type="xs:string"/>
+										<xs:element name="errorMessage" type="xs:string"/>
+										<xs:element name="messageValue" type="xs:string"/>
+										<xs:element name="xPath" type="xs:string"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

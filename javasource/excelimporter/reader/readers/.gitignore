@@ -1,0 +1,17 @@
+/DocProperties.class
+/ExcelColumn.class
+/ExcelDataReader.class
+/ExcelExtension.class
+/ExcelHeaderReader.class
+/ExcelImporterException.class
+/ExcelReader.class
+/ExcelRowProcessor$ExcelCellData.class
+/ExcelRowProcessor.class
+/ExcelRowProcessorImpl.class
+/ExcelRuntimeException.class
+/ExcelXLSXDataReader.class
+/ExtendedXSSFSheetXMLHandler$EmptyCellCommentsCheckType.class
+/ExtendedXSSFSheetXMLHandler$SheetContentsHandler.class
+/ExtendedXSSFSheetXMLHandler$xssfDataType.class
+/ExtendedXSSFSheetXMLHandler.class
+/XLSXHeaderFoundException.class

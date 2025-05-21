@@ -1,0 +1,35 @@
+//
+//
+// ./widgets/_table.scss
+//
+//
+.table-info {
+	&.mx-table {
+		background-color: transparent;
+		border-radius: 0 !important;
+		border-top: 1px solid rgba(0, 0, 0, 0.2);
+		& tbody {
+			& tr {
+				& th,
+				& td {
+					vertical-align: middle;
+					padding: 8px;
+					border-radius: 0 !important;
+					border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+					& .form-group {
+						margin: 0;
+					}
+				}
+				& th {
+					font-weight: 900;
+				}
+				& td {
+					font-size: 13px;
+				}
+			}
+		}
+		&.noborder {
+			border-top: none;
+		}
+	}
+}

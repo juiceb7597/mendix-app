@@ -1,0 +1,53 @@
+//
+//
+// ./widgets/_modal.scss
+//
+//
+@mixin modalstyle {
+	background-color: rgba(#fff, 0.8);
+	backdrop-filter: blur(20px);
+	border: none;
+	border-radius: var(--hlmodal-border-radius);
+	box-shadow: var(--hlmodal-box-shdow);
+	overflow: hidden;
+	@media (max-width: $screen-sm) {
+		border-radius: calc(var(--hlcard-padding) / 2);
+	}
+}
+@mixin modadlfootstyle {
+	background-color: transparent;
+	display: flex;
+	justify-content: center;
+	gap: 4px;
+	& button {
+		margin: 0;
+	}
+}
+.modal-dialog {
+	& .modal-content {
+		@include modalstyle();
+		& .modal-header {
+			padding: calc(var(--hlmodal-padding) / 2) var(--hlmodal-padding);
+			background-color: rgba(#fff, 0.4);
+			border: none;
+			@media (max-width: $screen-sm) {
+				padding: calc(var(--hlmodal-padding) / 2);
+			}
+		}
+		& .modal-body {
+			padding: calc(var(--hlmodal-padding) / 2) var(--hlmodal-padding);
+			background-color: transparent;
+			@media (max-width: $screen-sm) {
+				padding: calc(var(--hlmodal-padding) / 2);
+			}
+			& .mx-dataview {
+				& .mx-dataview-controls {
+					@include modadlfootstyle();
+				}
+			}
+		}
+		& .modal-footer {
+			@include modadlfootstyle();
+		}
+	}
+}

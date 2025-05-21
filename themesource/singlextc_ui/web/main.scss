@@ -1,0 +1,41 @@
+// font
+@import './font';
+
+// base
+@import './custom-variables';
+@import './custom-mixins.scss';
+@import 'root';
+
+// widgets
+@import './widgets/table';
+//@import './widgets/input';
+//@import './widgets/datagrid2';
+//@import './widgets/kanban';
+@import './widgets/modal';
+@import './widgets/MuiDrawer';
+@import './widgets/accordion';
+@import './widgets/tab';
+
+// layouts
+@import './layouts/common';
+@import './layouts/layouts_hl_ui';
+
+// pages
+@import './pages/pg-dashboard';
+@import './pages/pg-prototype-detail';
+@import './pages/pg-login';
+@import './pages/pg-faults';
+
+// blocks
+@import './blocks/card';
+
+.dj_contentbox {
+    overflow-y: hidden;
+}
+
+.dropbox select {
+    background-color: transparent;
+    border: none;
+    color: #AAE6F5;
+    font-weight: bold;
+}

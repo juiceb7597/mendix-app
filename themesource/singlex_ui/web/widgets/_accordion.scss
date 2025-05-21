@@ -1,0 +1,33 @@
+//
+//
+// ./widgets/_accordion.scss
+//
+//
+.widget-accordion {
+	margin-bottom: 24px;
+	& .widget-accordion-group {
+		border: 0 !important;
+		background-color: transparent;
+		& header {
+			&.widget-accordion-group-header {
+				& > .widget-accordion-group-header-button.widget-accordion-group-header-button-clickable {
+					background-color: transparent;
+					padding: 8px 0;
+					border-bottom: 1px solid rgba(#000000, 0.1);
+					border-radius: 0 !important;
+					&:active,
+					&:hover,
+					&:focus {
+						background-color: transparent;
+					}
+				}
+			}
+		}
+		& .widget-accordion-group-content-wrapper {
+			& .widget-accordion-group-content {
+				padding-left: 0;
+				padding-right: 0;
+			}
+		}
+	}
+}

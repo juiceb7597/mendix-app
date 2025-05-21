@@ -1,0 +1,7 @@
+copy: ${group}.${name}-${version}.jar
+library:
+  - "org.apache.poi:poi:4.1.2"
+  - name: "org.apache.poi:poi-ooxml:4.1.2"
+    exclude:
+      - "org.apache.commons:commons-compress"
+  - "org.apache.commons:commons-compress:1.21"

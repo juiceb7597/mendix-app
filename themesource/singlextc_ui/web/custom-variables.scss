@@ -1,0 +1,162 @@
+// Theme Colors
+// Gray Shades
+$brand-gray-100: #f1f3f5;
+$brand-gray-200: #e9ecef;
+$brand-gray-300: #dee2e6;
+$brand-gray-400: #ced4da;
+$brand-gray-500: #adb5bd;
+$brand-gray-600: #6a7178;
+$brand-gray-700: #4f575e;
+$brand-gray-800: #272b30;
+$brand-gray-900: #101213;
+
+// Semantic and brand colors
+$brand-primary: #00b4ed;
+$brand-secondary: $brand-gray-300;
+$brand-emp: #002b68;
+$brand-success: #b2b2b2;
+$brand-warning: #c09a5d;
+$brand-danger: #dc2020;
+// $brand-info: $brand-info;
+
+// Color variations
+//Primary color variations
+$color-primary-darkest: #162832;
+$color-primary-darker: #1e4d62;
+$color-primary-dark: #1c89b1;
+$color-primary-light: #5ac0ef;
+$color-primary-lighter: #a6d9f5;
+$color-primary-lightest: #c5e6f9;
+
+//Success color variations
+$color-success-darker: mix($brand-success, black, 60%);
+$color-success-dark: mix($brand-success, rgb(147, 125, 125), 70%);
+$color-success-light: mix($brand-success, white, 40%);
+$color-success-lighter: mix($brand-success, white, 20%);
+
+//Warning color variations
+$color-warning-darker: mix($brand-warning, black, 60%);
+$color-warning-dark: mix($brand-warning, black, 70%);
+$color-warning-light: mix($brand-warning, white, 40%);
+$color-warning-lighter: mix($brand-warning, white, 20%);
+
+//Danger color variations
+$color-danger-darker: mix($brand-danger, black, 60%);
+$color-danger-dark: mix($brand-danger, black, 70%);
+$color-danger-light: mix($brand-danger, white, 40%);
+$color-danger-lighter: mix($brand-danger, white, 20%);
+
+// $brand-gradient: linear-gradient(to right top, #264ae5, #2239c5, #1b29a6, #111988, #03096c);
+
+// Roots
+$main-font-size: 14px;
+$main-font-color: #0a1325;
+$secondary-font-color: #6c717e;
+$tertiary-font-color: #0a1325;
+
+$main-border-color: #ced0d3;
+$main-border-radius: 4px;
+
+// $body-background: #f8f8f8;
+$body-background: $brand-gray-400;
+$body-secondary-background: #fff;
+
+$link-color: $brand-primary;
+$link-hover-color: $color-primary-lighter;
+
+//Typography
+// $font-family-import: 'https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap';
+// $font-family-base: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+// 	'Segoe UI Symbol';
+$font-family-base: 'SUIT', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+	'Segoe UI Symbol';
+
+// Font Sizes
+$font-size-large: 1.125rem;
+$font-size-small: 0.875rem;
+$font-size-smallest: 0.75rem;
+
+// Font Weights
+$font-weight-light: 100;
+$font-weight-normal: 400;
+$font-weight-semibold: 500;
+$font-weight-bold: 700;
+
+//Font Size Headings
+$font-size-display: 2.25rem;
+$font-size-h1: 2rem;
+$font-size-h2: 1.75rem;
+$font-size-h3: 1.625rem;
+$font-size-h4: 1.375rem;
+$font-size-h5: 1.25rem;
+$font-size-h6: 1.125rem;
+
+$font-weight-header: $font-weight-semibold;
+$font-header-margin: 0 0 var(--space-s) 0;
+
+//Shadows
+$shadow-small: 0 2px 4px rgba(0, 0, 0, 0.1);
+$shadow-medium: 0 4px 6px rgba(0, 0, 0, 0.1);
+$shadow-large: 0 6px 8px rgba(0, 0, 0, 0.1);
+
+//Spacing
+$spacing-smallest: 2px;
+$spacing-smaller: 4px;
+$spacing-small: 8px;
+$spacing-medium: 16px;
+$spacing-large: 24px;
+$spacing-larger: 32px;
+$spacing-largest: 48px;
+
+//== Media queries breakpoints
+$screen-sm: 576px;
+$screen-md: 768px;
+$screen-lg: 992px;
+$screen-xl: 1200px;
+$screen-xxl: 1440px;
+
+//== Form
+//## Used in components/inputs
+// Values that can be used default | lined
+$form-input-style: default;
+
+// Form Label
+$form-label-color: var(--bs--body-color);
+$form-label-size: var(--font-size-base);
+$form-label-weight: var(--font-semibold);
+$form-label-gutter: var(--gutter-size);
+
+// Form Input dimensions
+$form-input-height: auto;
+$form-input-padding-y: var(--space-s);
+$form-input-padding-x: var(--space-s);
+$form-input-static-padding-y: var(--space-s);
+$form-input-static-padding-x: 0;
+$form-input-font-size: var(--font-size-base);
+// $form-input-line-height: $line-height-base;
+$form-input-border-radius: var(--bs-border-radius);
+
+// Form Input styling
+$form-input-bg: var(--bs-secondary-bg);
+$form-input-bg-focus: var(--bs-secondary-bg);
+$form-input-bg-hover: var(--bs-gray-300);
+$form-input-bg-disabled: var(--bs-secondary);
+$form-input-color: var(--bs--body-color);
+$form-input-focus-color: $form-input-color;
+$form-input-disabled-color: var(--bs-body-bg);
+$form-input-placeholder-color: #6c717c;
+$form-input-border-color: var(--bs-gray-300);
+$form-input-border-focus-color: var(--bs-primary);
+
+// Form Input Static styling
+$form-input-static-border-color: $form-input-border-color;
+
+// Form Group
+$form-group-margin-bottom: var(--space-base);
+$form-group-gutter: var(--space-base);
+
+////////////////////////////////////////////////
+/// custom styles for hl-mando
+////////////////////////////////////////////////
+$layout-pad-X: 32px;
+$layout-pad-scroll: 8px;

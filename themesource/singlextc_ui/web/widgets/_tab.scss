@@ -1,0 +1,61 @@
+//
+//
+// ./widgets/_tab.scss
+//
+//
+.mx-tabcontainer {
+	&:not([class*='dep']) {
+		& > ul.nav-tabs {
+			border-color: rgba(#000000, 0.1);
+			gap: 8px;
+			& > li {
+				& > a {
+					font-size: 16px;
+					padding: 8px 36px;
+					outline: none !important;
+					border: none;
+					&:hover,
+					&:focus {
+						background-color: transparent;
+						//color: $main-font-color;
+						border: none;
+					}
+				}
+				&.active {
+					& > a {
+						background-color: transparent;
+						font-weight: 600;
+						color: $main-font-color;
+						border-bottom: 2px solid $main-font-color;
+					}
+				}
+			}
+		}
+	}
+	&[class*='dep'] {
+		& > ul.nav-tabs {
+			border: none;
+			gap: 8px;
+			& > li {
+				& > a {
+					outline: none !important;
+					border: none;
+					padding: 8px 20px;
+					background-color: rgba(#fff, 0.6);
+					border-radius: 8px;
+					&:hover,
+					&:focus {
+						border: none;
+						background-color: rgba(#fff, 1);
+					}
+				}
+				&.active {
+					& > a {
+						background-color: $color-primary-dark;
+						color: #fff;
+					}
+				}
+			}
+		}
+	}
+}

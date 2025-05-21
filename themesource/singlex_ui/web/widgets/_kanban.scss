@@ -1,0 +1,106 @@
+//
+//
+// ./widgets/_kanban.scss
+//
+//
+@mixin boxstyle {
+	border-radius: 12px;
+	border: 1px solid $brand-gray-300;
+	box-shadow: none;
+	padding: 20px;
+}
+#MFI_KanbanLine {
+	background-color: #fff;
+	border-radius: var(--hlcard-border-radius);
+	padding: var(--hlcard-padding);
+	& > div {
+		gap: 24px;
+		& > [class*='MFI_KanbanLine'] {
+			& .MFI_KanbanLine_dnd_draggable_item {
+				box-shadow: none;
+				margin: 0;
+				& .MFI_KanbanCard {
+					padding: 0;
+					border-radius: 0;
+					& > div {
+						gap: 12px;
+						& .MFI_KanbanCard_dnd_draggable_item {
+							transition: background 0.2s ease;
+							margin: 0;
+							padding: 0;
+							@include boxstyle();
+							&.dnd_draggable_hover {
+								background-color: $brand-gray-100;
+								// box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+							}
+							& .kanban-detail {
+								& > .row {
+									&:nth-child(1) {
+										& > [class*='col'] {
+											display: flex;
+											align-items: center;
+											& button {
+												height: 28px;
+												min-height: 0;
+											}
+										}
+									}
+									&:nth-child(2) {
+										margin-top: 20px;
+										& > [class*='col'] {
+											display: flex;
+											flex-direction: column;
+											& span {
+												font-size: 12px;
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+				& h4 {
+					@include boxstyle();
+					margin-bottom: 12px;
+					padding: 12px 20px;
+					font-size: 18px;
+					font-weight: 600;
+					background-color: rgba(#000000, 0.04);
+					border: none;
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					gap: 8px;
+					&::before {
+						content: '';
+						display: block;
+						width: 12px;
+						height: 12px;
+						border-radius: 50%;
+					}
+				}
+			}
+			&:nth-child(1) {
+				& h4::before {
+					background-color: $brand-primary;
+				}
+			}
+			&:nth-child(2) {
+				& h4::before {
+					background-color: $brand-warning;
+				}
+			}
+			&:nth-child(3) {
+				& h4::before {
+					background-color: $brand-danger;
+				}
+			}
+			&:nth-child(4) {
+				& h4::before {
+					background-color: $brand-success;
+				}
+			}
+		}
+	}
+}

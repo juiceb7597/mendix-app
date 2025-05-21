@@ -1,0 +1,14 @@
+@import '../../../theme/web/custom-variables';
+
+// .grid-layout{
+//     &__item{
+//         border:1px solid grey;
+      
+//     }
+// }
+
+.react-grid-item {
+    border-radius: 8px;
+    padding: 16px;
+    background-color: white;
+}

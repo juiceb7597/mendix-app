@@ -1,0 +1,110 @@
+//
+//
+// ./pages/_pg-dashboard.scss
+//
+//
+.pg-dashboard {
+	& .row {
+		gap: 12px;
+		align-items: stretch;
+		& > [class*='col'] {
+		}
+		& + .row {
+			margin-top: 12px;
+		}
+	}
+}
+.main-chart {
+	&.widget-chart {
+		& .widget-charts-playground {
+			padding: 0;
+		}
+		& .mx-react-plotly-chart {
+			& .plot-container {
+				& .svg-container {
+					& .main-svg {
+						background-color: transparent !important;
+					}
+				}
+			}
+		}
+	}
+}
+.issues {
+	& .row.issues-display {
+		gap: 12px;
+		align-items: stretch;
+		margin-bottom: 16px;
+		& > [class*='col'] {
+			&:nth-child(1) {
+				& .card {
+					background-color: $brand-danger;
+				}
+			}
+			&:nth-child(2) {
+				& .card {
+					background-color: $brand-warning;
+				}
+			}
+			&:nth-child(3) {
+				& .card {
+					background-color: $brand-primary;
+				}
+			}
+			& .card {
+				padding: 20px;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				& h4 {
+					margin: 0;
+					font-size: 28px;
+					font-weight: 400;
+					color: #fff;
+				}
+				& label {
+					color: rgba(#fff, 0.5);
+				}
+			}
+		}
+	}
+	& .widget-gallery {
+		& .widget-gallery-content {
+			overflow-x: hidden;
+			overflow-y: auto;
+			& .widget-gallery-items {
+				& .widget-gallery-item {
+					padding-bottom: 8px;
+					border-bottom: 1px solid rgba(#000000, 0.05);
+					& .row {
+						gap: 8px;
+						align-items: center;
+						& [class*='col'] {
+							&:nth-child(1) {
+								& a {
+									pointer-events: none;
+								}
+							}
+							&:nth-child(2) {
+								display: flex;
+								flex-direction: column;
+								& .date {
+									font-size: 12px;
+									color: rgba(#000000, 0.6);
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	&:not(:has(.issues-display)) {
+		& .widget-gallery {
+			& .widget-gallery-content {
+				max-height: 210px !important;
+			}
+		}
+	}
+}

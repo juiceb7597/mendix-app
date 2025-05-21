@@ -1,0 +1,45 @@
+.custom-treenode-group {
+  .widget-tree-node-branch-header-value {
+    flex: 1;
+    font-size: 16px;
+    margin: 0;
+  }
+
+  .widget-tree-node-branch-header {
+      background-color: white;
+      padding-right: $spacing-medium;
+      padding-left: $spacing-medium;
+      min-height: 74px;
+  }
+  .widget-tree-node-branch {
+      background-color: white;
+      margin-bottom: $spacing-small;
+      box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  } 
+  .widget-tree-node-body {
+    height: auto !important;
+  }
+}
+.bottom-border {
+  border-bottom: 1px solid #ced0d3;
+}
+.overflow-x-hidden{
+  overflow-x: hidden;
+}
+.gallery-treenode-card {
+  .pagination-bar {
+    margin-top: 0px;
+    margin-right: 0px;
+  }
+  .widget-gallery-items {
+    .widget-gallery-item:last-child{
+      .bottom-border {
+        border-bottom: 0;
+      }
+    }
+    .group {
+      min-height: 55px;
+    }
+  }
+}
+

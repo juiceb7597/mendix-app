@@ -1,0 +1,66 @@
+//Bootstrap Root
+// @import 'core/bootstrap/scss/root';
+// @import '../../rocketui/web/core/bootstrap/scss/root';
+
+:root,
+[data-bs-theme='light'] {
+	// --tabs-border-color: #{$tabs-border-color};
+	// --tabs-color: #{$tabs-color};
+
+	// @each $size, $value in $spacers-mapping-values {
+	// 	--space-#{$size}: #{$value};
+	// }
+
+	// @each $size, $value in $font-size-mapping-values {
+	// 	--font-size-#{$size}: #{$value};
+	// }
+
+	// --gutter-size: var(--space-s);
+
+	--font-light: #{$font-weight-light};
+	--font-regular: #{$font-weight-normal};
+	--font-semi-bold: #{$font-weight-semibold};
+	--font-bold: #{$font-weight-bold};
+
+	// --sidebar-bg: var(--#{$prefix}secondary-bg);
+	--sidebar-bg-hover: rgba(0, 0, 0, 0.05);
+	// --sidebar-color: var(--#{$prefix}tertiary-color);
+	// --sidebar-color-hover: var(--#{$prefix}gray-800);
+	// --sidebar-color-active: var(--#{$prefix}primary);
+
+	--sidebar-close-width: 52px;
+	--sidebar-icon-height: 42px;
+	--sidebar-icon-width: 42px;
+
+	--topbar-min-height: 82px;
+	--topbar-menu-height: 42px;
+	// --topbar-bg-hover: rgba(255, 255, 255, 0.3);
+	// --topbar-bg-hover2: rgba(255, 255, 255, 0.7);
+	--topbar-bg-hover: rgba(255, 255, 255, 0.5);
+	--topbar-bg-hover2: rgba(255, 255, 255, 0.8);
+
+	--layout-spacing-top: var(--space-m);
+	--layout-spacing-bottom: var(--space-m);
+	--layout-spacing-left: var(--space-m);
+	--layout-spacing-right: var(--space-m);
+	--layout-title-size: 24px;
+	--layout-title-color: $main-font-color;
+	--layout-title-weight: 700;
+
+	--hlcard-bg-color: var(--topbar-bg-hover);
+	--hlcard-bg-color-emp: var(--topbar-bg-hover2);
+	--hlcard-border-radius: 34px;
+	--hlcard-padding: 32px;
+	--hlcard-border: none;
+	--hlcard-title-color: $main-font-color;
+	--hlcard-title-size: 16px;
+	--hlcard-title-weight: 600;
+	--hlcard-box-shdow: 0 2px 16px rgba(0, 0, 0, 0.06);
+
+	--hlmodal-border-radius: var(--hlcard-border-radius);
+	--hlmodal-box-shdow: 0 2px 20px rgba(0, 0, 0, 0.3);
+	--hlmodal-padding: var(--hlcard-padding);
+}
+
+// Themes Roots
+// @import 'themes/_import_themes_roots';

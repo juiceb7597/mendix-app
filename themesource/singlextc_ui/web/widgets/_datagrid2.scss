@@ -1,0 +1,116 @@
+//
+//
+// ./widgets/_datagrid2.scss
+//
+//
+.widget-datagrid {
+	&.page-default {
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+		& .widget-datagrid-content {
+			flex: 1;
+			display: flex;
+			flex-direction: column;
+			position: relative;
+			background-color: #fff;
+			border: var(--hlcard-padding) solid #fff;
+			border-top-width: calc(var(--hlcard-padding) / 3);
+
+			border-radius: var(--hlcard-border-radius);
+			& .widget-datagrid-grid.table {
+				flex: 1;
+				background-color: transparent;
+				border-radius: 0;
+				& .widget-datagrid-grid-body.table-content {
+					position: absolute;
+					width: 100%;
+					& .tr {
+						& .th,
+						& .td {
+						}
+						& .th {
+							border-bottom: 1px solid #ced0d3;
+							font-weight: 600;
+						}
+						& .td {
+							background-color: transparent;
+							border-color: lighten(#ced0d3, 12);
+							border-top-width: 0;
+							border-bottom-width: 1px;
+							font-size: 13px;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+//
+// type-dashboard
+$datagrid-radius: 8px;
+.type-dashboard.widget-datagrid {
+	& .widget-datagrid-header {
+		margin-bottom: 8px;
+	}
+	& .widget-datagrid-content {
+		& .widget-datagrid-grid.table {
+			background-color: transparent;
+			& .table-content {
+				gap: 2px 0;
+				& .tr {
+					& .th,
+					& .td {
+						border: none;
+						&:first-child {
+							border-radius: $datagrid-radius 0 0 $datagrid-radius;
+						}
+						&:last-child {
+							border-radius: 0 $datagrid-radius $datagrid-radius 0;
+						}
+					}
+					& .th {
+						text-align: center;
+						font-size: 13px;
+						font-weight: 600;
+					}
+					& .td {
+						background-color: var(--hlcard-bg-color);
+						font-size: 12px;
+						&.task-status {
+							& span {
+								padding-top: 0;
+								padding-bottom: 0;
+								font-size: 11px;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+:where(.pg-dashboard) {
+	.type-dashboard.widget-datagrid {
+		& .widget-datagrid-content {
+			max-height: 210px !important;
+		}
+	}
+	:where(.card.emp) {
+		.type-dashboard.widget-datagrid {
+			& .widget-datagrid-content {
+				& .widget-datagrid-grid.table {
+					& .table-content {
+						& .tr {
+							& .th {
+								background-color: $brand-primary;
+								color: #fff;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
